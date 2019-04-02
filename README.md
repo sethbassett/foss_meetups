@@ -6,8 +6,8 @@ Content for the Tallahassee FOSS Meetups
 Presenter: Seth W. Bassett, GISP  
 Prerequisites: None  
 
- # May 1, 2019: Using Virtual Machines and Linux  
-    
+ # May 1, 2019: Using Virtual Machines and Linux (Tentative)  
+     
  Presenter: Seth W. Bassett, GISP  
  
  Prerequisites:  
