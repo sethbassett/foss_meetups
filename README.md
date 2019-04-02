@@ -10,8 +10,7 @@ Prerequisites: None
      
  Presenter: Seth W. Bassett, GISP  
  
- Prerequisites:  
-   
+ Prerequisites:     
    + Software:
      + One or both of:
        + [Oracle VirtualBox 6.0](https://www.virtualbox.org/) 
@@ -22,3 +21,23 @@ Prerequisites: None
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
      
+# June 5, 2019: TBD  
+ Presenter: TBD  
+ Prerequisites: TBD
+ 
+# June 26 or July 10, 2019: TBD  
+ Presenter: TBD  
+ Prerequisites: TBD  
+ 
+# July 31 or August 7, 2019: TBD  
+ Presenter: TBD  
+ Prerequisites: TBD  
+ 
+# September 4, 2019: TBD  
+ Presenter: TBD  
+ Prerequisites: TBD  
+ 
+ 
+ 
+ 
+ 
