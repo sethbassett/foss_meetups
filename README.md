@@ -25,7 +25,7 @@ Prerequisites: None
  Presenter: TBD  
  Prerequisites: TBD
  
-# June 26 or July 10, 2019: TBD  
+# June 26, 2019: TBD  
  Presenter: TBD  
  Prerequisites: TBD  
  
