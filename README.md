@@ -12,9 +12,10 @@ Prerequisites: None
  
  Prerequisites:  
    
-   + Software:  
-     + An installed copy of [Oracle VirtualBox 6.0](https://www.virtualbox.org/)  **and/or**
-     + A Windows 10 machine with Hyper-V enabled  
+   + Software:
+     + One or both of:
+       + [Oracle VirtualBox 6.0](https://www.virtualbox.org/)  **and/or**
+       + A Windows 10 machine [with Hyper-V enabled](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
    + Data:  
      + [OSGeo osgeolive-vm .vmdk file](https://live.osgeo.org/en/download.html)  
      + One of:  
