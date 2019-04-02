@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Seth W. Bassett, GISP" />
+  <title>FOSS Overview</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="foss_overview_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="foss_overview_files/reveal.js-3.3.0.1/css/theme/night.css" id="theme">
+
+<style type="text/css">
+.reveal section img {
+  background: rgba(255, 255, 255, 0.85);
+}
+</style>
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal .slide-menu-button {
+      left: 105px !important;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="custom.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="foss_overview_files/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="foss_overview_files/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">FOSS Overview</h1>
+    <h2 class="author">Seth W. Bassett, GISP</h2>
+    <h3 class="date">April 3, 2019</h3>
+</section>
+
+<section><section id="why-foss" class="titleslide slide level1"><h1>Why FOSS?</h1></section><section id="why-i-use-foss-gis" class="slide level2">
+<h2>Why I use FOSS GIS</h2>
+<ul>
+<li>Expands my bag of tricks<br />
+</li>
+<li>Opens up alternative routes to success<br />
+</li>
+<li>Documentation is often better than proprietary tools<br />
+</li>
+<li>Error tracing is more detailed and robust than proprietary tools</li>
+<li>The theory of “career portability”</li>
+</ul>
+</section><section id="succeeding-with-foss-gis" class="slide level2">
+<h2>Succeeding with FOSS GIS</h2>
+<ul>
+<li>Self-starting<br />
+</li>
+<li>Willingness to experiment and try new things<br />
+</li>
+<li>Willingness to read the documentation<br />
+</li>
+<li>Willingness to bang your head against a wall</li>
+</ul>
+</section></section>
+<section><section id="the-foss-community" class="titleslide slide level1"><h1>The FOSS Community</h1></section><section id="a-brief-history-of-foss" class="slide level2">
+<h2>A Brief History of FOSS</h2>
+<p>In the early days of computing souce code was typically proprietary, whether corporate or academic.</p>
+<p>The FOSS model of software development as we know it today began when Richard Stallman launched the GNU Project and the Free Software Movement in 1983. He published the first GNU General Public License in 1989.</p>
+<p>Linux Torvalds released the first Linux kernel in 1991.</p>
+<p>The Open Source initative started in 1998.</p>
+<p>The Open Source Geospatial Foundation was founded in 2006.</p>
+</section><section id="foss-today" class="slide level2">
+<h2>FOSS Today</h2>
+<p>The world of Free and Open Source software is large and growing.</p>
+<p>In terms of market share, Linux currently has:</p>
+<ul>
+<li><a href="https://netmarketshare.com/linux-market-share?options=%7B%22filter%22%3A%7B%22%24and%22%3A%5B%7B%22deviceType%22%3A%7B%22%24in%22%3A%5B%22Desktop%2Flaptop%22%5D%7D%7D%5D%7D%2C%22dateLabel%22%3A%22Trend%22%2C%22attributes%22%3A%22share%22%2C%22group%22%3A%22platform%22%2C%22sort%22%3A%7B%22share%22%3A-1%7D%2C%22plotKeys%22%3A%5B%7B%22platform%22%3A%22Linux%22%7D%5D%2C%22id%22%3A%22linux%22%2C%22dateInterval%22%3A%22Monthly%22%2C%22dateStart%22%3A%222018-03%22%2C%22dateEnd%22%3A%222019-02%22%2C%22segments%22%3A%22-1000%22%7D">2.14% Of the desktop market</a><br />
+</li>
+<li><a href="https://w3techs.com/technologies/comparison/os-linux,os-windows">36.8% of website servers</a><br />
+</li>
+<li><a href="https://top500.org/statistics/list/">100% of the top 500 supercomputers</a></li>
+<li><a href="https://www.cbtnuggets.com/blog/2018/08/why-linux-runs-90-percent-of-the-public-cloud-workload/">90% of the public cloud workload</a></li>
+</ul>
+</section><section id="foss-gis" class="slide level2">
+<h2>FOSS GIS</h2>
+<p>The GIS segment of the FOSS community has come a long way in the past 10 years.</p>
+<ul>
+<li class="fragment">The FOSS GIS community is lead by <a href="https://www.osgeo.org/about/">OSGeo</a>, a 501(c)(4) not-for-profit organization.</li>
+<li class="fragment">The annual OSGeo conference is <a href="http://foss4g.org/">FOSS4G</a> and is held every Fall. It is typically held in North America every third year.<br />
+</li>
+<li class="fragment"><a href="https://2019.foss4g-na.org/">FOSS4G-NA</a> is held every spring in North America.<br />
+</li>
+<li class="fragment">OSGeo also <a href="https://www.osgeo.org/events/">puts on a variety of workshops, hackathons, code sprints, and other activities.</a></li>
+</ul>
+</section><section id="show-of-hands" class="slide level2">
+<h2>Show of Hands</h2>
+<ul>
+<li class="fragment">Some experience with Linux<br />
+</li>
+<li class="fragment">Use Linux as your main OS</li>
+<li class="fragment">Attended FOSS4G, FOSS4G-NA, or other OsGeo/FOSS event</li>
+<li class="fragment">Mortally tired of “this is my storymap” or “this is my collector project” presentations</li>
+</ul>
+</section><section id="why-are-we-here" class="slide level2">
+<h2>Why are we here?</h2>
+<ul>
+<li class="fragment"><strong>Me:</strong> So lonely.</li>
+<li class="fragment"><strong>You:</strong> ???<br />
+</li>
+<li class="fragment"><strong>Us:</strong><br />
+<img src="img/xkcd_grownups.png" alt="XKCD: Grownups" /></li>
+<li class="fragment">You will become me.</li>
+</ul>
+</section></section>
+<section><section id="a-brief-primer-on-copyright" class="titleslide slide level1"><h1>A Brief Primer on Copyright</h1></section><section id="what-is-copyright" class="slide level2">
+<h2>What is Copyright?</h2>
+<p>Computer programming falls under <strong>intellectual property law,</strong> which encompasses <strong>copyright, patents, and trademarks.</strong></p>
+<ul>
+<li class="fragment"><strong>Copyright</strong> is the <em>legal right</em> of a creator to control downstream distribution and use of his or her creative work.</li>
+<li class="fragment">Since 1987, copyright is applied by default to all creative works, with the creator holding the copyright.<br />
+</li>
+<li class="fragment">Coding is considered a creative act: just like music, film, television, authorship, or other art.</li>
+<li class="fragment">A basic understanding of copyright is key to understanding what “Free and Open Source” is all about.</li>
+</ul>
+</section><section id="florida-sunshine-law-data-vs.code" class="slide level2">
+<h2>Florida Sunshine Law: Data vs. Code</h2>
+<p>Under the Florida Sunshine law, data is a <em>matter of fact</em> and public data gathered by state agency is considerd public record and in the public domain. However, there is a specific exemption written into law for source code or ‘data processing software’ developed by state agencies.</p>
+<blockquote>
+<p>Section 119.084(2), F.S. […] specifically authorizes agencies to hold a copyright for data processing software created by the agency. The agency may sell the copyrighted software to public or private entities or may establish a license fee for its use. [Florida Sunshine Law Manual, p165]</p>
+</blockquote>
+</section></section>
+<section><section id="basic-foss-philosophy" class="titleslide slide level1"><h1>Basic FOSS Philosophy</h1></section><section id="free-and-open-source-software" class="slide level2">
+<h2><strong>Free</strong> and Open Source Software</h2>
+<blockquote>
+<p>‘Free as in freedom, not free as in beer.’</p>
+</blockquote>
+<p>Open source software is widely used in conjuntion with or as a part of commercial software but is not necessarily ‘free’ even if it cost nothing to acquire.</p>
+</section><section id="richard-stallman-foss4g" class="slide level2">
+<h2>Richard Stallman @ FOSS4G</h2>
+<p><img src="img/richard_stallman_headshot.png" alt="Stallman" /></p>
+<p>Iconoclastic tech guru that doesn’t use the internet. See Stallman’s <a href="http://2017.foss4g.org/post_conference/">FOSS4G keynote here</a>.</p>
+</section><section id="the-four-freedoms" class="slide level2">
+<h2>The Four Freedoms</h2>
+<ul>
+<li class="fragment"><strong>Freedom 0:</strong> The freedom to run the program as you wish, for any purpose.</li>
+<li class="fragment"><strong>Freedom 1:</strong> The freedom to study how the program works, change it so it does your computing as you wish. A precondition to this freedom is access to the source code.</li>
+<li class="fragment"><strong>Freedom 2:</strong> The freedom to redistribute copies so you can help others<br />
+</li>
+<li class="fragment"><strong>Freedom 3:</strong> The freedom to distribute copies of your modified version to others. A precondition of this freedom is access to the source code.</li>
+</ul>
+<p>Source: <a href="https://www.gnu.org/philosophy/free-sw.html">The GNU Operating System: What is free software?</a></p>
+</section><section id="stallman-foss4g" class="slide level2">
+<h2>Stallman @ FOSS4G</h2>
+<p><img src="img/stallman_user_control.png" alt="User Control" height="450" /></p>
+</section><section id="stallman-foss4g-1" class="slide level2">
+<h2>Stallman @ FOSS4G</h2>
+<p>Who is in control of your device?</p>
+<p><img src="img/stallman_microsoft_control.png" alt="Control" height="450" /></p>
+</section><section id="stallman-foss4g-2" class="slide level2">
+<h2>Stallman @ FOSS4G</h2>
+<p><img src="img/stallman_remote_updates.png" alt="Remote Updates" height="450" /></p>
+</section><section id="stallman-foss4g-3" class="slide level2">
+<h2>Stallman @ FOSS4G</h2>
+<p><img src="img/stallman_proprietary_malware.png" alt="Remote Updates" height="450" /></p>
+<p>Automatic updates mean that a corporation can execute arbitary code on your personal device, a violation of Freedom 0.</p>
+</section><section id="open-source-software" class="slide level2">
+<h2>Open Source Software</h2>
+<blockquote>
+<p>Open Source is a type of computer software in which source code is released under a license in which the copyright holder grants users the rights to study, change, and distribute the software to anyone and for any purpose.<br />
+<a href="https://en.wikipedia.org/wiki/Open-source_software">Wikipedia:Open Source Software</a></p>
+</blockquote>
+</section><section id="open-source-development" class="slide level2">
+<h2>Open Source Development</h2>
+<blockquote>
+<p>Open-source software development is the process by which open-source software, or similar software whose source code is publicly available, is developed by an open-source software project. These are software products available with its source code under an open-source license to study, change, and improve its design.<br />
+<a href="https://en.wikipedia.org/wiki/Open-source_software_development">Wikipedia:Open Source Development</a></p>
+</blockquote>
+</section><section id="open-source-vs.free-software" class="slide level2">
+<h2>Open Source vs. Free Software</h2>
+<blockquote>
+<p>“The two terms describe almost the same category of software, but they stand for views based on fundamentally different values. <strong>Open source is a development methodology; free software is a social movement</strong>”<br />
+Richard Stallman</p>
+</blockquote>
+</section><section id="why-is-this-important" class="slide level2">
+<h2>Why is this important?</h2>
+<p>The FOSS community is diverse and filled with actors motivated by different goals. Understanding the logic behind a licensing scheme is much easier than trying to understand the legalese of the licenses itself.</p>
+</section></section>
+<section><section id="licensing" class="titleslide slide level1"><h1>Licensing</h1></section><section id="licensing-basics" class="slide level2">
+<h2>Licensing Basics</h2>
+<p>Licensing is the method by which a creator controls subsequent downstream use of their creative work. Licensing can be thought of a spectrum.</p>
+<p><a href="https://en.wikipedia.org/wiki/Permissive_software_license#/media/File:Software-license-classification-mark-webbink.svg"><img src="img/software_license_spectrum.svg" alt="License Spectrum" /></a></p>
+</section><section id="public-domain" class="slide level2">
+<h2>Public Domain</h2>
+<ul>
+<li>Public domain consists of all creative works to which no exclusive intellectual property rights apply. No limitations on downstream works can be enforced.</li>
+<li>Those rights may have expired, been forfeited or expressly waived, or may be inapplicable.</li>
+<li>Government data and publications are public domain by default unless specifically exempted.<br />
+</li>
+<li><a href="https://www.sqlite.org/copyright.html">SQLite is widely used and in the public domain</a>.
+<ul>
+<li>Because copyright is assigned by default on all creative works, contributors must sign an affidavit expressely relinquishing their rights to their work on SQLite.</li>
+</ul></li>
+</ul>
+</section><section id="closed-source-esri-arcmap-eula" class="slide level2">
+<h2>Closed Source: ESRI ArcMap EULA</h2>
+<p><strong>ARTICLE 2</strong></p>
+<p>Products are licensed, not sold. Esri and its licensors own Products and all copies.</p>
+<p><strong>ARTICLE 4.2: Uses Not Permitted</strong></p>
+<ul>
+<li>Reverse engineer, decompile, or disassemble Products;<br />
+</li>
+<li>Incorporate any portion of the Product into a product or service that competes with the product.</li>
+<li>Use, incorporate, modify, distribute, provide access to, or combine any computer code provided with any Product in a manner that would subject such code or any part of the Product to open source license terms.</li>
+</ul>
+<p>C:\Program Files (x86)\ArcGIS10.x\License\EULA.pdf</p>
+</section><section id="closed-source-enforceability" class="slide level2">
+<h2>Closed Source: Enforceability</h2>
+<p><img src="img/teleatlas.png" alt="Teleatlas" /></p>
+<p>Not all provisions of a EULA are legally enforceable….</p>
+</section><section id="closed-source-enforceability-1" class="slide level2">
+<h2>Closed Source: Enforceability</h2>
+<p><img src="img/grumpycat.jpg" alt="Grumpy Cat" /></p>
+</section><section id="closed-source-incorporation-of-open-source" class="slide level2">
+<h2>Closed Source: Incorporation of Open Source</h2>
+<ul>
+<li><strong>Q:</strong> Why should I use FOSS if I have an ESRI license?</li>
+<li><strong>A:</strong> You already <em>are</em> using FOSS, you’re just paying a premium for a comforting UI.</li>
+</ul>
+<p><a href="https://www.esri.com/en-us/legal/requirements/open-source-acknowledgements">ESRI Open Source Licensing Acknowledgements</a><br />
+Also at: C:\Program Files (x86)\ArcGIS10.x\License\Copyright</p>
+</section><section id="permissive-open-source" class="slide level2">
+<h2>Permissive Open Source</h2>
+<p>Permissive open source licenses have minimal requirements regarding distribution and downstream use, typically limiting themselves to a requirement that the original software and license be reprinted and made available to the end user. This style of license allows for unlimited commercial or proprietary use and is routinely incorporated into closed source software.</p>
+<ul>
+<li>BSD License<br />
+</li>
+<li>MIT License<br />
+</li>
+<li>Apache License</li>
+<li>PostgreSQL License</li>
+</ul>
+</section><section id="mit-license" class="slide level2">
+<h2>MIT License</h2>
+<blockquote>
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+</blockquote>
+</section><section id="mit-license-1" class="slide level2">
+<h2>MIT License</h2>
+<blockquote>
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+</blockquote>
+<blockquote>
+<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</blockquote>
+</section><section id="copyleft" class="slide level2">
+<h2>Copyleft</h2>
+<p>Copyleft licensing, aka restrictive open-source licensing, includes hard restrictions on downstream derivative works designed to enforce the four software freedoms and keep free software free.</p>
+<ul>
+<li>GNU General Public License (GPL): v1, v2, v3<br />
+</li>
+<li>Affero General Public License (APGL): v1, v2, v3<br />
+</li>
+<li>Open Software License<br />
+</li>
+<li>Creative Commons Share Alike</li>
+</ul>
+<p>Contrary to popular belief, copyleft does not prevent commercial use of copyleft software. Copyleft licensing is also pejoratively known as “viral licensing.”</p>
+</section><section id="copyleft-the-gpl" class="slide level2">
+<h2>Copyleft: the GPL</h2>
+<ul>
+<li>Users are free to run, study, share, and modify the software<br />
+</li>
+<li>Privately held derivative works do not require you to publish your source code.<br />
+</li>
+<li>However, if you modify GPL software and distribute it to other users you must:
+<ul>
+<li>Provide copies of your modified source code along with the compiled binaries<br />
+</li>
+<li>License it under the GPL (hence ‘viral’)</li>
+</ul></li>
+</ul>
+<p>The APGL closes the ‘SaaS loophole’ in the GPL for commercial SaaS software that runs on cloud servers.</p>
+</section><section id="using-foss-in-business" class="slide level2">
+<h2>Using FOSS in Business</h2>
+<ul>
+<li><strong>Closed Source</strong>
+<ul>
+<li>You must pay for it and abide by the terms of the EULA<br />
+</li>
+</ul></li>
+<li><strong>Public Domain</strong>
+<ul>
+<li>You are free to do anything with it with no restrictions</li>
+</ul></li>
+<li><strong>Permissive Open Source</strong>
+<ul>
+<li>You are free to do anything with it, provided you acknowledge the original software and reprint the license</li>
+</ul></li>
+</ul>
+</section><section id="copyleft-licensing" class="slide level2">
+<h2>Copyleft Licensing</h2>
+<p>How do you develop proprietary business software on top of GPL code, when GPL requires that you make the source code of all derivative works publically available?</p>
+<ul>
+<li>Sell copies of FOSS software (likely not viable)<br />
+</li>
+<li>Give away copies of software; sell support, customization, and consulting expertise<br />
+</li>
+<li>Incorporate GPL in proprietary software <strong>as a library</strong> and do not modify the source<br />
+</li>
+<li>Modify the source but do not redistribute it, i.e. using GPL software as a SaaS (ethically dodgy)</li>
+</ul>
+</section></section>
+<section><section id="fikal-foss-i-have-known-and-loved" class="titleslide slide level1"><h1>FIKAL: FOSS I HAVE KNOWN AND LOVED</h1></section><section id="qgis" class="slide level2">
+<h2>QGIS</h2>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li>Full Featured FOSS GIS Suite<br />
+</li>
+<li>Plugins extend functionality<br />
+</li>
+<li>Direct connections to PostGIS support multi-user, transaction based editing<br />
+</li>
+<li>Multi-core rendering<br />
+</li>
+<li>LTS for business use<br />
+</li>
+<li>Many raster blending options<br />
+</li>
+<li>Makes you look like a genius</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>ESRI has intentionally crippled the OpenGDB API, so file geodatabases can be problematic<br />
+</li>
+<li>Bugs, although not as many as ArcGIS in my experience.<br />
+</li>
+<li>User Interface might appear clunky to some.<br />
+</li>
+<li>Map Composer is alien to ArcGIS users.</li>
+</ul>
+</div>
+</section><section id="qgis-shapefile-repair" class="slide level2">
+<h2>QGIS: Shapefile Repair</h2>
+<p><img src="img/qgis_shapefile_repair.png" alt="Shapefile Repair" /></p>
+<p>Problem: ArcMap cannot read shapefiles saved in an earlier version<br />
+Solution: Open in QGIS and ‘Save As…’ another shapefile.</p>
+</section><section id="qgis-raster-processing" class="slide level2">
+<h2>QGIS: Raster Processing</h2>
+<p><img src="img/qgis_benchmarks.png" alt="QGIS Benchmarks" /></p>
+<p>QGIS uses GDAL for many of its raster utilities.</p>
+</section><section id="qgis-raster-blending" class="slide level2">
+<h2>QGIS: Raster Blending</h2>
+<p><img src="img/qgis_raster_blending.png" alt="QGIS Blending" height="450" /></p>
+<p>Here we see the Stamen Toner basemap blended with a DEM using the ‘Multiply’ option.</p>
+</section><section id="qgis-3d-web-ready-content" class="slide level2">
+<h2>QGIS: 3D, web ready content</h2>
+<p><a href="http://floridageologicalsurvey.github.io/B68/">Example using the qgis2threejs plugin</a> <a href="http://floridageologicalsurvey.github.io/B68_v2/">Another example using the qgis2threejs plugin</a></p>
+</section><section id="gdal" class="slide level2">
+<h2>gdal</h2>
+<p>Blazing fast, vector and raster processing in native C, with python bindings.</p>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li>Wide array of raster and vector tools.<br />
+</li>
+<li>Very fast<br />
+</li>
+<li><a href="https://www.gdal.org/gdal_utilities.html">Raster Utilities</a><br />
+</li>
+<li><a href="https://www.gdal.org/ogr_utilities.html">Vector Utilities</a><br />
+</li>
+<li>Powerful tools, e.g. ogr2ogr allow you to translate entire databases in a go</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>Command line interface using flags<br />
+</li>
+<li>Every utility is different so learning new ones is a challenge<br />
+</li>
+<li>Very difficult to install on Windows</li>
+</ul>
+</div>
+</section><section id="gdal-examples" class="slide level2">
+<h2>gdal: Examples</h2>
+<p>An 8-bit SPOT scene stored in GeoTIFF with control points mapping the corners to lat/long could be warped to a UTM projection with a command like this:</p>
+<pre><code>gdalwarp -t_srs &#39;+proj=utm +zone=11 +datum=WGS84&#39; -overwrite raw_spot.tif utm11.tif </code></pre>
+<p>Create 10m contours from multiple a TIFF DEM and create a shapefile with the contour elevations in the “elev” attribute:</p>
+<pre><code>gdal_contour -a elev dem.tif contour.shp -i 10.0 </code></pre>
+<p><strong>Protip: Use QGIS as a ‘cheater’ to set up a single commmand, and then modify for batch operations.</strong></p>
+</section><section id="postgis-its-not-oracle" class="slide level2">
+<h2>PostGIS: It’s not Oracle!</h2>
+<p><img src="img/oracle_org_charts.gif" alt="Oracle Org Chart" height="450" /></p>
+</section><section id="postgis-its-not-oracle-1" class="slide level2">
+<h2>PostGIS: It’s not Oracle!</h2>
+<p><a href="https://palisadecompliance.com/oracle-audit-defense/">I’M</a></p>
+<p><a href="http://www.redwoodcompliance.com/oracle-license-audit-defense/">NOT</a></p>
+<p><a href="http://houseofbrick.com/7-questions-to-ask-when-engaging-an-oracle-audit-defense-consultant">KIDDING</a></p>
+</section><section id="postgis" class="slide level2">
+<h2>PostGIS</h2>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li><a href="https://postgis.net/docs/reference.html">Tons of Spatial Functions</a></li>
+<li>Cross Platform, including AWS &amp; Azure RDS services<br />
+</li>
+<li>Blazing fast on old hardware</li>
+<li>Direct integration with QGIS<br />
+</li>
+<li>Command line toolset to import shapefile and raster data<br />
+</li>
+<li>Structure (schemas, tables, etc) will be familiar to FileGDB users<br />
+</li>
+<li>Excellent documentation<br />
+</li>
+<li>Foreign Data Wrappers!</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>“Enterprise” level software solution (IT will choke)<br />
+</li>
+<li>Require mid-level proficiency in SQL to get started<br />
+</li>
+<li>Learning the ST function suite takes time<br />
+</li>
+<li>Poor/buggy ESRI integration as of ArcMap 10.4<br />
+</li>
+<li>Basic DBA skills required to manage users, roles, permissions, and config</li>
+</ul>
+</div>
+</section><section id="postgis-inspiration" class="slide level2">
+<h2>PostGIS: Inspiration</h2>
+<p>Who owns Florida?<br />
+<img src="img/postgis_inspiration.png" alt="My Favorite Map" /></p>
+</section><section id="postgis-who-owns-florida" class="slide level2">
+<h2>PostGIS: Who owns Florida?</h2>
+<div id="left">
+<ol type="1">
+<li>Calculate 9,008,470 parcel centroids<br />
+</li>
+<li>Calculate all US zip code centroids<br />
+</li>
+<li>Exclude owner’s ZIP where ZIP intersects Florida, and any property that is not residential<br />
+</li>
+<li>Aggregate the Just Value (appraised value) of every owner zip code<br />
+</li>
+<li>Use ST_Makeline() to connect every parcel to the owner’s ZIP centroid.</li>
+</ol>
+</div>
+<div id="right">
+<p><strong>Volusia County Parcel Vectors</strong></p>
+<p><img src="img/postgis_florida_ownership.png" alt="Who owns Florida" /> Scaled by Average Just Value per Owner ZIP</p>
+</div>
+</section><section id="postgis-who-owns-florida-1" class="slide level2">
+<h2>PostGIS: Who owns Florida?</h2>
+<p><img src="img/postgis_florida_ownership2.png" alt="SQL 1" /></p>
+</section><section id="postgis-who-owns-florida-2" class="slide level2">
+<h2>PostGIS: Who owns Florida?</h2>
+<p><img src="img/postgis_florida_ownership3.png" alt="SQL 2" /></p>
+</section><section id="postgis-who-owns-florida-3" class="slide level2">
+<h2>PostGIS: Who owns Florida?</h2>
+<p><img src="img/postgis_florida_ownership4.png" alt="SQL 3" /></p>
+</section><section id="openjump" class="slide level2">
+<h2>OpenJump</h2>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li>Preferred by PostGIS Gurus<br />
+</li>
+<li>Lightweight, platform agnostic Java application<br />
+</li>
+<li>Query layers!</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>UI can feel outdated and clunky</li>
+</ul>
+</div>
+</section><section id="geoserver" class="slide level2">
+<h2>Geoserver</h2>
+<p>FOSS WMS map services</p>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li>Directly integrates with PostGIS</li>
+<li>Serve out data direct to web apps and ArcGIS users via WFS, WMS, etc.<br />
+</li>
+<li>Data is downloadable as KML, SHP, and others</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>Requires strong familiarity with Linux in a production environment<br />
+</li>
+<li>SLD styling is a horror show (that QGIS can help you mitigate…)<br />
+</li>
+<li>Backend software only<br />
+</li>
+<li>Savvy web-development team really needed to leverage into web apps</li>
+</ul>
+</div>
+</section><section id="scikit-imagescikit-learn" class="slide level2">
+<h2>scikit-image/scikit-learn</h2>
+<p>Image processing, segementation, feature detection, and machine learning</p>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li>Bleeding edge machine learning and image processing algorithms</li>
+<li>Some algorithms will be familiar to image analysts<br />
+</li>
+<li>Easily integrates with ArcPy, especially in Pro<br />
+</li>
+<li><strong>Extremely</strong> powerful and fast<br />
+</li>
+<li>Excellent documentation</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>Requires a strong knowledge of image processing and programming</li>
+<li>Experience with multi-threaded processing in python is really need to leverage results</li>
+</ul>
+</div>
+</section><section id="osgeo-vm" class="slide level2">
+<h2>OSGeo VM</h2>
+<p>Want to play? <a href="https://live.osgeo.org/en/quickstart/virtualization_quickstart.html">GO HERE.</a>.</p>
+<div id="left">
+<p><strong>The Good</strong></p>
+<ul>
+<li>Quickstart you FOSS-GIS experience with a custom VM that has a wide array of FOSS-GIS software pre-installed.</li>
+</ul>
+</div>
+<div id="right">
+<p><strong>The Bad</strong></p>
+<ul>
+<li>Doesn’t teach you installation and configuration, which is often half the battle…</li>
+</ul>
+</div>
+</section></section>
+<section><section id="were-adults.-its-up-to-us-to-decide-what-that-means." class="titleslide slide level1"><h1>We’re adults. It’s up to us to decide what that means.</h1></section><section id="topics-for-second-hour" class="slide level2">
+<h2>Topics for Second Hour</h2>
+<ul>
+<li>Next meeting: May 1?<br />
+</li>
+<li>Current format: ok?
+<ul>
+<li>Weekend workshops<br />
+</li>
+<li>Hackathons, code sprints, and group projects<br />
+</li>
+</ul></li>
+<li>Suggestion for next meeting:
+<ul>
+<li>Seth-led presentation on using Virtual Machines to play with FOSS software safely.</li>
+</ul></li>
+<li>Call for 3-6 volunteers to lead a sessions.
+<ul>
+<li>Skill level can be from ‘I decided to play around with…’ to ‘Advanced usage of…’<br />
+</li>
+<li>Focus should be on ‘this is <strong>how you do something</strong>’ not a ‘<strong>this is what I did</strong>’ style report.</li>
+</ul></li>
+</ul>
+</section><section id="topics-for-second-hour-1" class="slide level2">
+<h2>Topics for Second Hour</h2>
+<ul>
+<li>Future directions
+<ul>
+<li>Continue as we are until SHRUG</li>
+<li>In the meantime, get together a SHRUG special interest session of 3-6 SHRUG presentations based on these.<br />
+</li>
+<li>Use SHRUG session to expand group.<br />
+</li>
+</ul></li>
+<li>Group Name?
+<ul>
+<li>FFOSS<br />
+</li>
+<li>FOSS-TLH<br />
+</li>
+<li>T-FOSS<br />
+</li>
+<li>The Cheap Bastards and Bastardets</li>
+</ul></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="foss_overview_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="foss_overview_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          numbers: true,
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        chalkboard: {
+          toggleNotesButton: true,
+          theme: 'whiteboard',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'foss_overview_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'foss_overview_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+          { src: 'foss_overview_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'foss_overview_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
