@@ -1,6 +1,6 @@
 # Tallahassee FOSS Meetups
 
-Tallahassee's homegrown FOSS meetup group. Located in the **terra incognita** somewhere between a GIS lab and a group therapy session.  
+Tallahassee's homegrown FOSS meetup group. Located in the *terra incognita* somewhere between the GIS lab and a group therapy session.  
   
 # Guidelines for presenters and audience  
   
