@@ -28,7 +28,7 @@ Generally speaking, we meet the first Wednesday of every month, unless otherwise
 
 ## April 3, 2019: Introduction to FOSS GIS  
 
-Presenter: Seth W. Bassett, GISP  
+Presenter: Seth 
 Prerequisites: None  
 
 ## May 1, 2019: Using Virtual Machines and Linux (Tentative)  
