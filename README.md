@@ -22,22 +22,26 @@ Prerequisites: None
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
      
 # June 5, 2019: TBD  
- Presenter: TBD  
- Prerequisites: TBD
+ Presenter: Phil  
+ Prerequisites: QGIS Basics
  
 # June 26, 2019: TBD  
- Presenter: TBD  
+ Presenter: Linc  
  Prerequisites: TBD  
  
 # July 31 or August 7, 2019: TBD  
- Presenter: TBD  
+ Presenter: Mark  
+ Prerequisites: GIS Server as Tamagachi  
+  
+# September 4, 2019:   
+ Presenter: Chris  
  Prerequisites: TBD  
  
-# September 4, 2019: TBD  
- Presenter: TBD  
- Prerequisites: TBD  
- 
- 
+ # October 2, 2019:  
+  Presenter: Rick  
+  Prerequisites: TBD  
+  
+  
  
  
  
