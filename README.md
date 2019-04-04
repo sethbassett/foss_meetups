@@ -1,6 +1,6 @@
 # Tallahassee FOSS Meetups
 
-Tallahassee's homegrown FOSS meetup group. Something between a mutual support and therapy group and a GIS lab.  
+Tallahassee's homegrown FOSS meetup group. Located in the **terra incognita** somewhere between a GIS lab and a group therapy session.  
   
 # Guidelines for presenters and audience  
   
@@ -9,11 +9,11 @@ The first half of each meeting is volunteer-led instruction. The second half is 
 **Presenters:**
   + Target is 45-60 minute length.  
   + Focus is 'how to do X using FOSS'  
-  + Have any prerequisites - software and data - to Seth at least 7 days prior to your scheduled presentation.  
+  + Any prerequisites - software and data - should be sent to Seth at least 7 days prior to your scheduled presentation.  
   + Do your best to keep any example data relatively small in size.  
-  + **Do NOT** use proprietary or private data in your presentation!  
+  + **Do NOT** use proprietary or private data in your presentation.  
   + Slides and handouts should be platform agnostic and exported to HTML or PDF. HTML is strongly preferred.  
-  + Bring digital copies of your materials with you so Seth can post to github.  
+  + Unless you want to opt out, please bring digital copies of your materials with you so Seth can post to github.  
   + Don't stop your presentation to troubleshoot a single person's technical issue - take care of it in the second hour.  
   + Failure is OK!  
   
@@ -24,7 +24,7 @@ The first half of each meeting is volunteer-led instruction. The second half is 
     
 # Scheduled Meetings  
 
-Generally speaking, we meet the first Wednesday of every month, unless otherwise noted.  
+Generally speaking, we meet the first Wednesday evening of every month, unless otherwise noted.  
 
 ## April 3, 2019: Introduction to FOSS GIS  
 
