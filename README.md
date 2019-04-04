@@ -31,10 +31,16 @@ Presenter: Seth W. Bassett, GISP
 Prerequisites: None  
 
 ## May 1, 2019: Using Virtual Machines and Linux (Tentative)  
-     
- Presenter: Seth W. Bassett, GISP  
- 
- Prerequisites:     
+ Presenter: Seth   
+Using linux virtual machines to play with FOSS in a sane and safe manner. Topics covered:  
+  + Installing Ubuntu as a guest OS  
+  + Using the Bash terminal  
+  + Installing and configuring QGIS and PostGIS  
+  + Loading sample data into PostGIS  
+  + VM Snapshots and Backups  
+  
+ Prerequisites:  
+   + A laptop with 8gb of RAM and 2+ cores  
    + Software:
      + One or both of:
        + [Oracle VirtualBox 6.0](https://www.virtualbox.org/) 
@@ -44,13 +50,15 @@ Prerequisites: None
      + One of:  
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
+     + Example GIS data TBD  
      
-## June 5, 2019: QGIS Basics (tools, toolboxes, plugins)  
+     
+## June 5, 2019: QGIS Tools, Toolboxes, Utilities, and Plugins  
  Presenter: Phil  
  Prerequisites: TBD  
  
  
-## June 26, 2019: QGIS Basics (Map Composer)  
+## June 26, 2019: QGIS Map Composer (or was it Spatial SQL?)  
  Presenter: Linc  
  Prerequisites: TBD  
  
