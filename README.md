@@ -1,12 +1,36 @@
-# foss_meetups
-Content for the Tallahassee FOSS Meetups
+# Tallahassee FOSS Meetups
 
-# April 3, 2019: Introduction to FOSS GIS  
+Tallahassee's homegrown FOSS meetup group. Something between a mutual support and therapy group and a GIS lab.  
+  
+# Guidelines for presenters and audience  
+  
+The first half of each meeting is volunteer-led instruction. The second half is a freeform experimentation/mutual assistance/bullshitting session.  
+
+**Presenters:**
+  + Target is 45-60 minute length.  
+  + Focus is 'how to do X using FOSS'  
+  + Have any prerequisites - software and data - to Seth at least 7 days prior to your scheduled presentation.  
+  + Do your best to keep any example data relatively small in size  
+  + Slides and handouts should be platform agnostic and exported to HTML or PDF. HTML is strongly preferred.  
+  + Bring digital copies of your materials with you so Seth can post to github.  
+  + Don't stop your presentation to troubleshoot a single person's technical issue - take care of it in the second hour.  
+  + Failure is OK!  
+  
+**Audience:**  
+  + Bing your laptop  
+  + Have any prerequisites downloaded and installed when you arrive  
+  + If you hit a technical snag and can't resolve it youself, wait until the second half to ask for assistance  
+    
+# Scheduled Meetings  
+
+Generally speaking, we meet the first Wednesday of every month, unless otherwise noted.  
+
+## April 3, 2019: Introduction to FOSS GIS  
 
 Presenter: Seth W. Bassett, GISP  
 Prerequisites: None  
 
- # May 1, 2019: Using Virtual Machines and Linux (Tentative)  
+## May 1, 2019: Using Virtual Machines and Linux (Tentative)  
      
  Presenter: Seth W. Bassett, GISP  
  
@@ -21,25 +45,27 @@ Prerequisites: None
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
      
-# June 5, 2019: TBD  
+## June 5, 2019: QGIS Basics (tools, toolboxes, plugins)  
  Presenter: Phil  
- Prerequisites: QGIS Basics
+ Prerequisites: TBD  
  
-# June 26, 2019: TBD  
+ 
+## June 26, 2019: QGIS Basics (Map Composer)  
  Presenter: Linc  
  Prerequisites: TBD  
  
-# July 31 or August 7, 2019: TBD  
+## July 31 or August 7, 2019: Feeding, Watering, and Caring for GIS Servers  
  Presenter: Mark  
- Prerequisites: GIS Server as Tamagachi  
+ Prerequisites: TBD
   
-# September 4, 2019:   
+## September 4, 2019: Topic TBD  
  Presenter: Chris  
  Prerequisites: TBD  
  
- # October 2, 2019:  
+## October 2, 2019: Public Data and Where to Find It
   Presenter: Rick  
   Prerequisites: TBD  
+  
   
   
  
