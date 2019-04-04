@@ -10,7 +10,8 @@ The first half of each meeting is volunteer-led instruction. The second half is 
   + Target is 45-60 minute length.  
   + Focus is 'how to do X using FOSS'  
   + Have any prerequisites - software and data - to Seth at least 7 days prior to your scheduled presentation.  
-  + Do your best to keep any example data relatively small in size  
+  + Do your best to keep any example data relatively small in size.  
+  + **Do NOT** use proprietary or private data in your presentation!  
   + Slides and handouts should be platform agnostic and exported to HTML or PDF. HTML is strongly preferred.  
   + Bring digital copies of your materials with you so Seth can post to github.  
   + Don't stop your presentation to troubleshoot a single person's technical issue - take care of it in the second hour.  
