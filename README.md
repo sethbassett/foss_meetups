@@ -31,21 +31,21 @@ Presenter: Seth W. Bassett, GISP
 Prerequisites: None  
 
 ## May 1, 2019: Using Virtual Machines and Linux (Tentative)  
- Presenter: Seth   
-Using linux virtual machines to play with FOSS in a sane and safe manner. Topics covered:  
+ **Presenter:** Seth   
+Using linux virtual machines to play with FOSS in a sane and safe manner.
   + Installing Ubuntu as a guest OS  
   + Using the Bash terminal  
   + Installing and configuring QGIS and PostGIS  
   + Loading sample data into PostGIS  
   + VM Snapshots and Backups  
   
- Prerequisites:  
+ **Prerequisites:**  
    + A laptop with 8gb of RAM and 2+ cores  
-   + Software:
+   + **Software:**
      + One or both of:
        + [Oracle VirtualBox 6.0](https://www.virtualbox.org/) 
        + A Windows 10 machine [with Hyper-V enabled](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
-   + Data:  
+   + **Data:**  
      + [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
      + One of:  
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
