@@ -31,7 +31,7 @@ Generally speaking, we meet the first Wednesday of every month, unless otherwise
 Presenter: **Seth**
 Prerequisites: None  
 
-## May 1, 2019: Using Virtual Machines and Linux (Tentative)  
+## May 1, 2019: Using Virtual Machines and Linux  
 Presenter: **Seth**   
 Using linux virtual machines to play with FOSS in a sane and safe manner.
   + Installing Ubuntu as a guest OS  
