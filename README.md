@@ -28,11 +28,11 @@ Generally speaking, we meet the first Wednesday of every month, unless otherwise
 
 ## April 3, 2019: Introduction to FOSS GIS  
 
-Presenter: Seth 
+Presenter: **Seth**
 Prerequisites: None  
 
 ## May 1, 2019: Using Virtual Machines and Linux (Tentative)  
- **Presenter:** Seth   
+Presenter: **Seth**   
 Using linux virtual machines to play with FOSS in a sane and safe manner.
   + Installing Ubuntu as a guest OS  
   + Using the Bash terminal  
@@ -55,24 +55,24 @@ Using linux virtual machines to play with FOSS in a sane and safe manner.
      
      
 ## June 5, 2019: QGIS Tools, Toolboxes, Utilities, and Plugins  
- Presenter: Phil  
+ Presenter: **Phil**  
  Prerequisites: TBD  
  
  
 ## June 26, 2019: QGIS Map Composer (or was it Spatial SQL?)  
- Presenter: Linc  
+ Presenter: **Linc**  
  Prerequisites: TBD  
  
 ## July 31 or August 7, 2019: Feeding, Watering, and Caring for GIS Servers  
- Presenter: Mark  
+ Presenter: **Mark**  
  Prerequisites: TBD
   
 ## September 4, 2019: Topic TBD  
- Presenter: Chris  
+ Presenter: **Chris**  
  Prerequisites: TBD  
  
 ## October 2, 2019: Public Data and Where to Find It
-  Presenter: Rick  
+  Presenter: **Rick**  
   Prerequisites: TBD  
   
   
