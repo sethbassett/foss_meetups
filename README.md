@@ -39,7 +39,8 @@ Using linux virtual machines to play with FOSS in a sane and safe manner.
   + Installing and configuring QGIS and PostGIS  
   + Loading sample data into PostGIS  
   + VM Snapshots and Backups  
-  
+Main tutorial will be in VirtualBox as it is cross-platform, but you are welcome to use Hyper-V as they do the same thing with a slightly different look and feel.  
+
  **Prerequisites:**  
    + A laptop with 8gb of RAM and 2+ cores  
    + **Software:**
