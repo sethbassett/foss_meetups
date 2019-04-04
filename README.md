@@ -71,7 +71,8 @@ Using linux virtual machines to play with FOSS in a sane and safe manner.
  Presenter: **Chris**  
  Prerequisites: TBD  
  
-## October 2, 2019: Public Data and Where to Find It
+## October 2, 2019: Big Data to go along with FOSS  
+Census data, commodity flows, and other publicly available data.  
   Presenter: **Rick**  
   Prerequisites: TBD  
   
