@@ -18,7 +18,7 @@ The first half of each meeting is volunteer-led instruction. The second half is 
   + Failure is OK!  
   
 **Audience:**  
-  + Bing your laptop  
+  + Bring your laptop  
   + Have any prerequisites downloaded and installed when you arrive  
   + If you hit a technical snag and can't resolve it youself, wait until the second half to ask for assistance  
     
