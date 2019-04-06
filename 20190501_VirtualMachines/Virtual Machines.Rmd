@@ -1,0 +1,46 @@
+---
+title: "FOSS Overview"
+author: "Seth W. Bassett, GISP"
+date: "April 3, 2019"
+output: 
+  revealjs::revealjs_presentation:
+
+    self_contained: false
+    css: custom.css
+    theme: night
+    transition: concave
+    center: false
+    widescreen: true
+    reveal_plugins: ["zoom", "notes", "chalkboard", "menu"]
+    reveal_options:
+      chalkboard: 
+        theme: whiteboard
+        toggleNotesButton: true
+      menu:
+        numbers: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Virtual Machines & Linux Basics  
+  
+## Virtual Machines  
+  
+  + Simulates hardware  
+    + Host = 'bare metal OS'  
+    + Guest = the VM
+  + "A computer within a computer"  
+  + Several available options: VirtualBox, Hyper-V  
+  + Allows one physical server to act as many smaller servers  
+  + Virtualization translates diretly to cloud services  
+  + Compromized guest OS is 'sandboxed' and attacker cannot escalate to the host  
+  
+## Ubuntu  
+  
+  + Most popular linux distro  
+  + Easy to trouble shoot with google  
+  
+  
