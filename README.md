@@ -44,16 +44,18 @@ My tutorial will use VirtualBox and Linux Mint, but you are welcome to use Hyper
 
  **Prerequisites:**  
    + A laptop with 8gb of RAM, 2+ cores, and 30-50 Gb of free disk space.  
-   + **Software:**
+   + **Pre-installed Software:**
      + One or both of:
-       + [Oracle VirtualBox 6.0](https://www.virtualbox.org/) 
-       + A Windows 10 machine [with Hyper-V enabled](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+       + [Oracle VirtualBox 6.0.6](https://www.virtualbox.org/wiki/Downloads) 
+       + [tualBox 6.0.6 Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack) 
+Download the VirtualBox installer that is appropriate for your system and install VirtualBox. Download the extension pack file - clicking on it should run it with VirtualBox and install the extension pack automatically. 
    + **Data:**  
      + [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
      + One of:  
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
-     + Example GIS data TBD  
+        + Any other \*buntu variant (Kubuntu, Xubuntu, etc.) based on Ubuntu 18.04.2 "Bionic Beaver"
+     + [Florida County Boundaries](https://download.fgdl.org/pub/state/county_sep15.zip) or similar shapefile data. 
      
      
 ## June 5, 2019: QGIS Tools, Toolboxes, Utilities, and Plugins  
