@@ -1,5 +1,5 @@
 ---
-title: "FOSS Overview"
+title: "Virtual Machines and Linux Basics"
 author: "Seth W. Bassett, GISP"
 date: "April 3, 2019"
 output: 
@@ -38,9 +38,163 @@ knitr::opts_chunk$set(echo = FALSE)
   + Virtualization translates diretly to cloud services  
   + Compromized guest OS is 'sandboxed' and attacker cannot escalate to the host  
   
-## Ubuntu  
+## Why Ubuntu  
   
   + Most popular linux distro  
-  + Easy to trouble shoot with google  
+  + Easy to troubleshoot with google  
+  + Many 'flavors' of *buntu  
+    + Ubuntu  
+    + Mint  
+    + Lubuntu  
+    + Xubuntu  
+    + Ubuntu Mate  
+    + Ubuntu Kylin  
+    + Ubuntu Budgie  
+  + Ubuntu Server  
+  + All are the same 'under the hood' and only the desktop software is different (or, for server, not installed by default)
+    
+## Why Bash?
+  + Every ubuntu desktop is different. Bash is always the same.  
+  + Allows you to build recipes or scripts to automatically setup and configure an ubuntu VM  
+  + It is just plain easier once you know what you are doing  
   
+# Step 1: Allocating a new VM and Installing Ubuntu  
+
+## VirtualBox: Create a New VM
+  
+  1. Open VirtualBox 
+  2, Click the "New" button  
+![New Icon](img/virtualbox_new.png)  
+  
+  
+## VirtualBox: Allocate Hardware Resources  
+  
+  1. Name your VM  
+  2. Set a folder that will hold the VM  
+  3. Set Type to 'Linux'  
+  4. Set Version to Ubuntu (64-bit)  
+  5. Allocate RAM:  
+    + 4096 Mb for 4 Gb  
+    + 8192 Mb for 8 Gb  
+  6. Select 'Create a Virtual Hard Disk Now'  
+    
+## VirtualBox: Allocate Hardware Resources  
+  
+![Allocation Screen](img/virtualbox_hardware.png){height=450px}
+  
+## Virtualbox: Allocate HDD Space  
+  
+**VDI** is the native format of VirtualBox. I didn't search for any other software that supports this format.  
+
+**VMDK** is developed by and for VMWare, but Sun xVM, QEMU, VirtualBox, SUSE Studio, and .NET DiscUtils also support it. (This format might be the most apt for you because you want virtualization software that would run fine on Ubuntu.)  
+
+**VHD** is the native format of Microsoft Virtual PC. This is a format that is popular with Microsoft products.  
+  
+
+## VirtualBox: Allocate HDD Space  
+
+![VirtualBox HDD](img/virtualbox_hdd.png){height=450px}  
+
+## VirtualBox: Attach ISO Image to Virtual IDE drive
+
+![VirtualBox HDD](img/virtualbox_set_iso.png){height=450px}  
+  
+  ## Start your virtual machine  
+  
+    * Once the VM boots into Mint, double click on the 'Install Linux Mint' CD icon on the desktop.  
+    * For most screens, accept the defaults.  
+    * Create a username and password. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+    * When you are done, click 'Keep Exploring.' Then go to the Start Menu, click the power icon, and select "Shutdown." When prompted to remove install media, hit enter.  
+  
+## BEFORE Turning your new VM on.  
+  
+  * Go into settings and give your new VM some more graphics resources, if available!  
+  * Make sure your IDE Optical Media shows 'Empty'  
+  
+Then boot up your new Linux VM. After booting, you can increase your screen size by going to the start menu and searching for 'display.' 
+
+
+# Installing PostGIS  
+  
+Our next step is to install and setup PostgreSQL and PostGIS for Ubuntu. To do this, we will use the terminal. This has advantages over using the GUI package manager:  
+  
+  * install recipe will work on any flavor of Ubuntu, or on Ubuntu Server  
+  * Faster than using the package manager  
+  
+## Using Bash  
+  
+The linux shell is called 'bash.' The bash shell language is its own turing-complete programming language. There are many command-line utilities for bash that come pre-installed with linux.  
+  
+To open bash, press "CTRL-ALT-T" or click on the shell icon.  
+
+## Basic Bash Commands  
+  
+```
+# Change Directory
+cd /
+
+# List files 
+ls  
+ls -l 
+ls -lha
+  
+# Super User Do  
+sudo ls  
+```  
+
+## Basic Bash Commands  
+  
+```
+# Create file 
+touch example.txt  
+
+# Edit file, CTRL-X to exit. 
+nano example.txt  
+
+# Remove File  
+rm example.txt  
+sudo ls  
+```  
+
+## Basic Bash Commands  
+  
+```
+#Install Something  
+sudo apt-get install htop
+
+# Run it
+htop  
+```
+
+## Adding the PostGIS repository
+
+Via the [PostGIS website](http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS24UbuntuPGSQL10Apt)
+
+```
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bionic-pgdg main" >> /etc/apt/sources.list
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo add-apt update  
+
+```  
+  
+## Install PostGIS  
+
+```
+sudo apt-get install postgresql-10
+sudo apt-get install postgresql-10-postgis-2.4 
+sudo apt-get install postgresql-10-postgis-scripts
+
+#to get the commandline tools shp2pgsql, raster2pgsql you need to do this
+sudo apt-get install postgis
+```
+
+
+  
+  
+    
+  
+
+
+   
+
   

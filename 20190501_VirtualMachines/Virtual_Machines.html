@@ -5,7 +5,7 @@
   <meta name="generator" content="pandoc">
   <meta name="author" content="Seth W. Bassett, GISP" />
   <meta name="dcterms.date" content="2019-04-03" />
-  <title>FOSS Overview</title>
+  <title>Virtual Machines and Linux Basics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -462,7 +462,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <div class="slides">
 
 <section>
-    <h1 class="title">FOSS Overview</h1>
+    <h1 class="title">Virtual Machines and Linux Basics</h1>
     <h2 class="author">Seth W. Bassett, GISP</h2>
     <h3 class="date">April 3, 2019</h3>
 </section>
@@ -486,13 +486,144 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </li>
 <li>Compromized guest OS is ‘sandboxed’ and attacker cannot escalate to the host</li>
 </ul>
-</section><section id="ubuntu" class="slide level2">
-<h2>Ubuntu</h2>
+</section><section id="why-ubuntu" class="slide level2">
+<h2>Why Ubuntu</h2>
 <ul>
 <li>Most popular linux distro<br />
 </li>
-<li>Easy to trouble shoot with google</li>
+<li>Easy to troubleshoot with google<br />
+</li>
+<li>Many ‘flavors’ of *buntu
+<ul>
+<li>Ubuntu<br />
+</li>
+<li>Mint<br />
+</li>
+<li>Lubuntu<br />
+</li>
+<li>Xubuntu<br />
+</li>
+<li>Ubuntu Mate<br />
+</li>
+<li>Ubuntu Kylin<br />
+</li>
+<li>Ubuntu Budgie<br />
+</li>
+</ul></li>
+<li>Ubuntu Server<br />
+</li>
+<li>All are the same ‘under the hood’ and only the desktop software is different (or, for server, not installed by default)</li>
 </ul>
+</section><section id="why-bash" class="slide level2">
+<h2>Why Bash?</h2>
+<ul>
+<li>Every ubuntu desktop is different. Bash is always the same.<br />
+</li>
+<li>Allows you to build recipes or scripts to automatically setup and configure an ubuntu VM<br />
+</li>
+<li>It is just plain easier once you know what you are doing</li>
+</ul>
+</section></section>
+<section><section id="step-1-allocating-a-new-vm-and-installing-ubuntu" class="title-slide slide level1"><h1>Step 1: Allocating a new VM and Installing Ubuntu</h1></section><section id="virtualbox-create-a-new-vm" class="slide level2">
+<h2>VirtualBox: Create a New VM</h2>
+<ol type="1">
+<li>Open VirtualBox 2, Click the “New” button<br />
+<img data-src="img/virtualbox_new.png" alt="New Icon" /></li>
+</ol>
+</section><section id="virtualbox-allocate-hardware-resources" class="slide level2">
+<h2>VirtualBox: Allocate Hardware Resources</h2>
+<ol type="1">
+<li>Name your VM<br />
+</li>
+<li>Set a folder that will hold the VM<br />
+</li>
+<li>Set Type to ‘Linux’<br />
+</li>
+<li>Set Version to Ubuntu (64-bit)<br />
+</li>
+<li>Allocate RAM:<br />
++ 4096 Mb for 4 Gb<br />
++ 8192 Mb for 8 Gb<br />
+</li>
+<li>Select ‘Create a Virtual Hard Disk Now’</li>
+</ol>
+</section><section id="virtualbox-allocate-hardware-resources-1" class="slide level2">
+<h2>VirtualBox: Allocate Hardware Resources</h2>
+<p><img data-src="img/virtualbox_hardware.png" alt="Allocation Screen" height="450" /></p>
+</section><section id="virtualbox-allocate-hdd-space" class="slide level2">
+<h2>Virtualbox: Allocate HDD Space</h2>
+<p><strong>VDI</strong> is the native format of VirtualBox. I didn’t search for any other software that supports this format.</p>
+<p><strong>VMDK</strong> is developed by and for VMWare, but Sun xVM, QEMU, VirtualBox, SUSE Studio, and .NET DiscUtils also support it. (This format might be the most apt for you because you want virtualization software that would run fine on Ubuntu.)</p>
+<p><strong>VHD</strong> is the native format of Microsoft Virtual PC. This is a format that is popular with Microsoft products.</p>
+</section><section id="virtualbox-allocate-hdd-space-1" class="slide level2">
+<h2>VirtualBox: Allocate HDD Space</h2>
+<p><img data-src="img/virtualbox_hdd.png" alt="VirtualBox HDD" height="450" /></p>
+</section><section id="virtualbox-attach-iso-image-to-virtual-ide-drive" class="slide level2">
+<h2>VirtualBox: Attach ISO Image to Virtual IDE drive</h2>
+<p><img data-src="img/virtualbox_set_iso.png" alt="VirtualBox HDD" height="450" /></p>
+<p>## Start your virtual machine</p>
+<pre><code>* Once the VM boots into Mint, double click on the &#39;Install Linux Mint&#39; CD icon on the desktop.  
+* For most screens, accept the defaults.  
+* Create a username and password. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+* When you are done, click &#39;Keep Exploring.&#39; Then go to the Start Menu, click the power icon, and select &quot;Shutdown.&quot; When prompted to remove install media, hit enter.  </code></pre>
+</section><section id="before-turning-your-new-vm-on." class="slide level2">
+<h2>BEFORE Turning your new VM on.</h2>
+<ul>
+<li>Go into settings and give your new VM some more graphics resources, if available!<br />
+</li>
+<li>Make sure your IDE Optical Media shows ‘Empty’</li>
+</ul>
+<p>Then boot up your new Linux VM. After booting, you can increase your screen size by going to the start menu and searching for ‘display.’</p>
+</section></section>
+<section><section id="installing-postgis" class="title-slide slide level1"><h1>Installing PostGIS</h1></section><section id="using-bash" class="slide level2">
+<h2>Using Bash</h2>
+<p>The linux shell is called ‘bash.’ The bash shell language is its own turing-complete programming language. There are many command-line utilities for bash that come pre-installed with linux.</p>
+<p>To open bash, press “CTRL-ALT-T” or click on the shell icon.</p>
+</section><section id="basic-bash-commands" class="slide level2">
+<h2>Basic Bash Commands</h2>
+<pre><code># Change Directory
+cd /
+
+# List files 
+ls  
+ls -l 
+ls -lha
+  
+# Super User Do  
+sudo ls  </code></pre>
+</section><section id="basic-bash-commands-1" class="slide level2">
+<h2>Basic Bash Commands</h2>
+<pre><code># Create file 
+touch example.txt  
+
+# Edit file, CTRL-X to exit. 
+nano example.txt  
+
+# Remove File  
+rm example.txt  
+sudo ls  </code></pre>
+</section><section id="basic-bash-commands-2" class="slide level2">
+<h2>Basic Bash Commands</h2>
+<pre><code>#Install Something  
+sudo apt-get install htop
+
+# Run it
+htop  </code></pre>
+</section><section id="adding-the-postgis-repository" class="slide level2">
+<h2>Adding the PostGIS repository</h2>
+<p>Via the <a href="http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS24UbuntuPGSQL10Apt">PostGIS website</a></p>
+<pre><code>sudo sh -c &#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt bionic-pgdg main&quot; &gt;&gt; /etc/apt/sources.list
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo add-apt update  
+</code></pre>
+</section><section id="install-postgis" class="slide level2">
+<h2>Install PostGIS</h2>
+<pre><code>sudo apt-get install postgresql-10
+sudo apt-get install postgresql-10-postgis-2.4 
+sudo apt-get install postgresql-10-postgis-scripts
+
+#to get the commandline tools shp2pgsql, raster2pgsql you need to do this
+sudo apt-get install postgis</code></pre>
 </section></section>
     </div>
   </div>
