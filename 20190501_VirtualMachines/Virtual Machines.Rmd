@@ -101,19 +101,27 @@ knitr::opts_chunk$set(echo = FALSE)
   
   ## Start your virtual machine  
   
-    * Once the VM boots into Mint, double click on the 'Install Linux Mint' CD icon on the desktop.  
+    * Once the VM boots into Mint, use your windows key and type in "display" to change the size of the display  
+    * double click on the 'Install Linux Mint' CD icon on the desktop.  
     * For most screens, accept the defaults.  
-    * Create a username and password. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+    * Create a username and password when prompted. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
     * When you are done, click 'Keep Exploring.' Then go to the Start Menu, click the power icon, and select "Shutdown." When prompted to remove install media, hit enter.  
   
 ## BEFORE Turning your new VM on.  
   
   * Go into settings and give your new VM some more graphics resources, if available!  
+  * Click 'Enable 2D acceleration'  
   * Make sure your IDE Optical Media shows 'Empty'  
   
-Then boot up your new Linux VM. After booting, you can increase your screen size by going to the start menu and searching for 'display.' 
+Now boot up your new Linux VM. After booting, you can increase your screen size by going to the start menu and searching for 'display.' 
 
+## Install VirtualBox Guest additions  
+  
+VirtualBox guest additions extends guest OS functionality and allows access to hardware video acceleration (faster!)  
 
+  * In the **VirtualBox** 'Devices' drop down, select 'Insert guest additions image' and let it install  
+  * Reboot the VM using either the start menu, or ```sudo shutdown -r now```  
+  
 # Installing PostGIS  
   
 Our next step is to install and setup PostgreSQL and PostGIS for Ubuntu. To do this, we will use the terminal. This has advantages over using the GUI package manager:  
@@ -186,6 +194,27 @@ sudo apt-get install postgresql-10-postgis-scripts
 
 #to get the commandline tools shp2pgsql, raster2pgsql you need to do this
 sudo apt-get install postgis
+
+# to get pgadmin4, the graphical database manager, you do this  
+sudo apt-get install pgadmin4
+
+# update package info and upgrade everything 
+sudo apt-get update && sudo apt-get upgrade 
+```
+
+## Create a Spatial Database  
+psql is the postgresql command line admin tool. It has its own set of shortcut commands that are prefaced with "\\"
+```
+# in bash, fire off psql from the user 'postgres'
+sudo -u postgres psql
+
+# you are now in the psql interface, notice the difference?
+CREATE USER seth WITH PASSWORD 'seth' SUPERUSER;
+CREATE DATABASE gis;
+\c gis
+CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_topology;
+\q
 ```
 
 
