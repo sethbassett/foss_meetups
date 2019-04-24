@@ -53,7 +53,7 @@ Download the VirtualBox installer that is appropriate for your system and instal
      + One of:  
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
-        + Any other [\*buntu variant (Kubuntu, Xubuntu, etc.)](https://www.psychocats.net/ubuntu/whichbuntu) that **is based on Ubuntu 18.04.2 "Bionic Beaver"**
+        + Any other .iso file containing the installer for any [\*buntu variant (Kubuntu, Xubuntu, etc.)](https://www.psychocats.net/ubuntu/whichbuntu) that **is based on Ubuntu 18.04.2 "Bionic Beaver"**
      + [Florida County Boundaries](https://download.fgdl.org/pub/state/county_sep15.zip) or similar shapefile data. 
      + (Optional) [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
      
