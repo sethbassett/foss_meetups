@@ -47,7 +47,7 @@ My tutorial will use VirtualBox and Linux Mint, but you are welcome to use Hyper
    + **Pre-installed Software:**
      + One or both of:
        + [Oracle VirtualBox 6.0.6](https://www.virtualbox.org/wiki/Downloads) 
-       + [tualBox 6.0.6 Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack) 
+       + [Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack) 
 Download the VirtualBox installer that is appropriate for your system and install VirtualBox. Download the extension pack file - clicking on it should run it with VirtualBox and install the extension pack automatically. 
    + **Data:**  
      + [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
