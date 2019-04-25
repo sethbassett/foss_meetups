@@ -50,8 +50,6 @@ My tutorial will use VirtualBox and Linux Mint, but you are welcome to use Hyper
        + [Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack)  
       
 Download the VirtualBox installer that is appropriate for your system and install VirtualBox. Download the extension pack file - clicking on it should run it with VirtualBox and install the extension pack automatically. 
-
-If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualBox](https://www.nextofwindows.com/how-to-enable-configure-and-use-hyper-v-on-windows-10). You shouldn't have problems but I won't be able to troubleshoot anything that comes up until the second hour.  
  
    + **Data:**  
      + One of:  
@@ -60,8 +58,9 @@ If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualB
         + Any other .iso file containing the installer for any [\*buntu variant (Kubuntu, Xubuntu, etc.)](https://www.psychocats.net/ubuntu/whichbuntu) that **is based on Ubuntu 18.04.2 "Bionic Beaver"**
      + [Florida County Boundaries](https://download.fgdl.org/pub/state/county_sep15.zip) or similar shapefile data. 
      + (Optional) [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
-     
-     
+
+If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualBox](https://www.nextofwindows.com/how-to-enable-configure-and-use-hyper-v-on-windows-10). You shouldn't have problems but I won't be able to troubleshoot anything that comes up until the second hour.  
+
 ## June 5, 2019: QGIS Tools, Toolboxes, Utilities, and Plugins  
  Presenter: **Phil**  
  Prerequisites: TBD  
