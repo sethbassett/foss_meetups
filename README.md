@@ -45,10 +45,14 @@ My tutorial will use VirtualBox and Linux Mint, but you are welcome to use Hyper
 ### **Prerequisites:**  
    + A laptop with 8gb of RAM, 2+ cores, and 30-50 Gb of free disk space.  
    + **Pre-installed Software:**
-     + One or both of:
+     + Both:
        + [Oracle VirtualBox 6.0.6](https://www.virtualbox.org/wiki/Downloads) 
-       + [Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack) 
+       + [Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack)  
+      
 Download the VirtualBox installer that is appropriate for your system and install VirtualBox. Download the extension pack file - clicking on it should run it with VirtualBox and install the extension pack automatically. 
+
+If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualBox](https://www.nextofwindows.com/how-to-enable-configure-and-use-hyper-v-on-windows-10). You shouldn't have problems but I won't be able to troubleshoot anything that comes up until the second hour.  
+ 
    + **Data:**  
      + One of:  
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
