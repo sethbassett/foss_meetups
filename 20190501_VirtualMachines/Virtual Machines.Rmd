@@ -101,19 +101,20 @@ knitr::opts_chunk$set(echo = FALSE)
   
   ## Start your virtual machine  
   
-    * Once the VM boots into Mint, use your windows key and type in "display" to change the size of the display  
+    * Once the VM boots into Mint, use your CMD key to open the menu and type in "display" to search for the display properties. Cange the size of the display  
     * double click on the 'Install Linux Mint' CD icon on the desktop.  
     * For most screens, accept the defaults.  
-    * Create a username and password when prompted. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+      + Create a username and password when prompted. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+    * Install should take around 8 minutes
     * When you are done, click 'Keep Exploring.' Then go to the Start Menu, click the power icon, and select "Shutdown." When prompted to remove install media, hit enter.  
   
-## BEFORE Turning your new VM on.  
+## BEFORE Turning your new VM back on.  
   
   * Go into settings and give your new VM some more graphics resources, if available!  
   * Click 'Enable 2D acceleration'  
   * Make sure your IDE Optical Media shows 'Empty'  
   
-Now boot up your new Linux VM. After booting, you can increase your screen size by going to the start menu and searching for 'display.' 
+Now boot up your new Linux VM. 
 
 ## Install VirtualBox Guest additions  
   
@@ -188,7 +189,11 @@ sudo add-apt update
 ## Install PostGIS  
 
 ```
+# install postgresql and postgis (2 minutes)
 sudo apt-get install postgresql-10 postgresql-10-postgis-2.4 postgresql-10-postgis-scripts postgis
+
+# install qgis (5 minutes)
+sudo apt-get install qgis  
 
 # to get pgadmin4, the graphical database manager, you do this  
 sudo apt-get install pgadmin4
@@ -211,6 +216,15 @@ CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 \q
 ```
+
+## Loading data  
+  
+Two ways to load data:  
+  
+  1. Via QGIS  
+  2. Via shp2pgsql in bash  
+
+Download some data from FGDL.org and let's get cracking...
 
 
   

@@ -562,13 +562,14 @@ document.getElementsByTagName('head')[0].appendChild(style);
 <h2>VirtualBox: Attach ISO Image to Virtual IDE drive</h2>
 <p><img data-src="img/virtualbox_set_iso.png" alt="VirtualBox HDD" height="450" /></p>
 <p>## Start your virtual machine</p>
-<pre><code>* Once the VM boots into Mint, use your windows key and type in &quot;display&quot; to change the size of the display  
+<pre><code>* Once the VM boots into Mint, use your CMD key to open the menu and type in &quot;display&quot; to search for the display properties. Cange the size of the display  
 * double click on the &#39;Install Linux Mint&#39; CD icon on the desktop.  
 * For most screens, accept the defaults.  
-* Create a username and password when prompted. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+  + Create a username and password when prompted. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+* Install should take around 8 minutes
 * When you are done, click &#39;Keep Exploring.&#39; Then go to the Start Menu, click the power icon, and select &quot;Shutdown.&quot; When prompted to remove install media, hit enter.  </code></pre>
-</section><section id="before-turning-your-new-vm-on." class="slide level2">
-<h2>BEFORE Turning your new VM on.</h2>
+</section><section id="before-turning-your-new-vm-back-on." class="slide level2">
+<h2>BEFORE Turning your new VM back on.</h2>
 <ul>
 <li>Go into settings and give your new VM some more graphics resources, if available!<br />
 </li>
@@ -576,7 +577,7 @@ document.getElementsByTagName('head')[0].appendChild(style);
 </li>
 <li>Make sure your IDE Optical Media shows ‘Empty’</li>
 </ul>
-<p>Now boot up your new Linux VM. After booting, you can increase your screen size by going to the start menu and searching for ‘display.’</p>
+<p>Now boot up your new Linux VM.</p>
 </section><section id="install-virtualbox-guest-additions" class="slide level2">
 <h2>Install VirtualBox Guest additions</h2>
 <p>VirtualBox guest additions extends guest OS functionality and allows access to hardware video acceleration (faster!)</p>
@@ -629,7 +630,11 @@ sudo add-apt update
 </code></pre>
 </section><section id="install-postgis" class="slide level2">
 <h2>Install PostGIS</h2>
-<pre><code>sudo apt-get install postgresql-10 postgresql-10-postgis-2.4 postgresql-10-postgis-scripts postgis
+<pre><code># install postgresql and postgis (2 minutes)
+sudo apt-get install postgresql-10 postgresql-10-postgis-2.4 postgresql-10-postgis-scripts postgis
+
+# install qgis (5 minutes)
+sudo apt-get install qgis  
 
 # to get pgadmin4, the graphical database manager, you do this  
 sudo apt-get install pgadmin4
@@ -649,6 +654,15 @@ CREATE DATABASE gis;
 CREATE EXTENSION postgis;
 CREATE EXTENSION postgis_topology;
 \q</code></pre>
+</section><section id="loading-data" class="slide level2">
+<h2>Loading data</h2>
+<p>Two ways to load data:</p>
+<ol type="1">
+<li>Via QGIS<br />
+</li>
+<li>Via shp2pgsql in bash</li>
+</ol>
+<p>Download some data from FGDL.org and let’s get cracking…</p>
 </section></section>
     </div>
   </div>
