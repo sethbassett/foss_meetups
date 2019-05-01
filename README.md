@@ -42,20 +42,25 @@ Using linux virtual machines to play with FOSS in a sane and safe manner.
   
 My tutorial will use VirtualBox and Linux Mint, but you are welcome to use Hyper-V and any \*buntu variant with a desktop that you want to use. It all does the same thing with a slightly different look and feel and we will be using the terminal for most everything anyway. People that would like to take this knowledge back to their job will probably want to use Hyper-V, as this is the virtualization software most orgs use at the systems level.  
 
- **Prerequisites:**  
+### **Prerequisites:**  
    + A laptop with 8gb of RAM, 2+ cores, and 30-50 Gb of free disk space.  
-   + **Software:**
-     + One or both of:
-       + [Oracle VirtualBox 6.0](https://www.virtualbox.org/) 
-       + A Windows 10 machine [with Hyper-V enabled](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+   + **Pre-installed Software:**
+     + Both:
+       + [Oracle VirtualBox 6.0.6](https://www.virtualbox.org/wiki/Downloads) 
+       + [Oracle VM VirtualBox Extension Pack](https://download.virtualbox.org/virtualbox/6.0.6/Oracle_VM_VirtualBox_Extension_Pack-6.0.6.vbox-extpack)  
+      
+Download the VirtualBox installer that is appropriate for your system and install VirtualBox. Download the extension pack file - clicking on it should run it with VirtualBox and install the extension pack automatically. 
+ 
    + **Data:**  
-     + [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
      + One of:  
         + [Linux Mint 19.1 "Tessa" ISO Image](https://linuxmint.com/edition.php?id=261)  
         + [Ubuntu 18.04.2 LTS "Bionic Beaver" ISO Image](http://releases.ubuntu.com/18.04/)  
-     + Example GIS data TBD  
-     
-     
+        + Any other .iso file containing the installer for any [\*buntu variant (Kubuntu, Xubuntu, etc.)](https://www.psychocats.net/ubuntu/whichbuntu) that **is based on Ubuntu 18.04.2 "Bionic Beaver"**
+     + [Florida County Boundaries](https://download.fgdl.org/pub/state/county_sep15.zip) or similar shapefile data. 
+     + (Optional) [OSGeo osgeolive-vm.vmdk file](https://live.osgeo.org/en/download.html)  
+
+If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualBox](https://www.nextofwindows.com/how-to-enable-configure-and-use-hyper-v-on-windows-10). You shouldn't have problems but I won't be able to troubleshoot anything that comes up until the second hour.  
+
 ## June 5, 2019: QGIS Tools, Toolboxes, Utilities, and Plugins  
  Presenter: **Phil**  
  Prerequisites: TBD  
@@ -77,9 +82,3 @@ My tutorial will use VirtualBox and Linux Mint, but you are welcome to use Hyper
 Census data, commodity flows, and other publicly available data.  
   Presenter: **Rick**  
   Prerequisites: TBD  
-  
-  
-  
- 
- 
- 
