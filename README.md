@@ -82,9 +82,3 @@ If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualB
 Census data, commodity flows, and other publicly available data.  
   Presenter: **Rick**  
   Prerequisites: TBD  
-  
-  
-  
- 
- 
- 

@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Seth W. Bassett, GISP" />
+  <meta name="dcterms.date" content="2019-04-03" />
+  <title>Virtual Machines and Linux Basics</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="Virtual_Machines_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+
+<link rel="stylesheet" href="Virtual_Machines_files/reveal.js-3.3.0.1/css/theme/night.css" id="theme">
+
+<style type="text/css">
+.reveal section img {
+  background: rgba(255, 255, 255, 0.85);
+}
+</style>
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal .slide-menu-button {
+      left: 105px !important;
+    }
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="custom.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link href="Virtual_Machines_files/font-awesome-5.0.13/css/fa-svg-with-js.css" rel="stylesheet" />
+    <script src="Virtual_Machines_files/font-awesome-5.0.13/js/fontawesome-all.min.js"></script>
+    <script src="Virtual_Machines_files/font-awesome-5.0.13/js/fa-v4-shims.min.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Virtual Machines and Linux Basics</h1>
+    <h2 class="author">Seth W. Bassett, GISP</h2>
+    <h3 class="date">April 3, 2019</h3>
+</section>
+
+<section><section id="virtual-machines-linux-basics" class="title-slide slide level1"><h1>Virtual Machines &amp; Linux Basics</h1></section><section id="virtual-machines" class="slide level2">
+<h2>Virtual Machines</h2>
+<ul>
+<li>Simulates hardware
+<ul>
+<li>Host = ‘bare metal OS’<br />
+</li>
+<li>Guest = the VM</li>
+</ul></li>
+<li>“A computer within a computer”<br />
+</li>
+<li>Several available options: VirtualBox, Hyper-V<br />
+</li>
+<li>Allows one physical server to act as many smaller servers<br />
+</li>
+<li>Virtualization translates diretly to cloud services<br />
+</li>
+<li>Compromized guest OS is ‘sandboxed’ and attacker cannot escalate to the host</li>
+</ul>
+</section><section id="why-ubuntu" class="slide level2">
+<h2>Why Ubuntu</h2>
+<ul>
+<li>Most popular linux distro<br />
+</li>
+<li>Easy to troubleshoot with google<br />
+</li>
+<li>Many ‘flavors’ of *buntu
+<ul>
+<li>Ubuntu<br />
+</li>
+<li>Mint<br />
+</li>
+<li>Lubuntu<br />
+</li>
+<li>Xubuntu<br />
+</li>
+<li>Ubuntu Mate<br />
+</li>
+<li>Ubuntu Kylin<br />
+</li>
+<li>Ubuntu Budgie<br />
+</li>
+</ul></li>
+<li>Ubuntu Server<br />
+</li>
+<li>All are the same ‘under the hood’ and only the desktop software is different (or, for server, not installed by default)</li>
+</ul>
+</section><section id="why-bash" class="slide level2">
+<h2>Why Bash?</h2>
+<ul>
+<li>Every ubuntu desktop is different. Bash is always the same.<br />
+</li>
+<li>Allows you to build recipes or scripts to automatically setup and configure an ubuntu VM<br />
+</li>
+<li>It is just plain easier once you know what you are doing</li>
+</ul>
+</section></section>
+<section><section id="step-1-allocating-a-new-vm-and-installing-ubuntu" class="title-slide slide level1"><h1>Step 1: Allocating a new VM and Installing Ubuntu</h1></section><section id="virtualbox-create-a-new-vm" class="slide level2">
+<h2>VirtualBox: Create a New VM</h2>
+<ol type="1">
+<li>Open VirtualBox 2, Click the “New” button<br />
+<img data-src="img/virtualbox_new.png" alt="New Icon" /></li>
+</ol>
+</section><section id="virtualbox-allocate-hardware-resources" class="slide level2">
+<h2>VirtualBox: Allocate Hardware Resources</h2>
+<ol type="1">
+<li>Name your VM<br />
+</li>
+<li>Set a folder that will hold the VM<br />
+</li>
+<li>Set Type to ‘Linux’<br />
+</li>
+<li>Set Version to Ubuntu (64-bit)<br />
+</li>
+<li>Allocate RAM:<br />
++ 4096 Mb for 4 Gb<br />
++ 8192 Mb for 8 Gb<br />
+</li>
+<li>Select ‘Create a Virtual Hard Disk Now’</li>
+</ol>
+</section><section id="virtualbox-allocate-hardware-resources-1" class="slide level2">
+<h2>VirtualBox: Allocate Hardware Resources</h2>
+<p><img data-src="img/virtualbox_hardware.png" alt="Allocation Screen" height="450" /></p>
+</section><section id="virtualbox-allocate-hdd-space" class="slide level2">
+<h2>Virtualbox: Allocate HDD Space</h2>
+<p><strong>VDI</strong> is the native format of VirtualBox. I didn’t search for any other software that supports this format.</p>
+<p><strong>VMDK</strong> is developed by and for VMWare, but Sun xVM, QEMU, VirtualBox, SUSE Studio, and .NET DiscUtils also support it. (This format might be the most apt for you because you want virtualization software that would run fine on Ubuntu.)</p>
+<p><strong>VHD</strong> is the native format of Microsoft Virtual PC. This is a format that is popular with Microsoft products.</p>
+</section><section id="virtualbox-allocate-hdd-space-1" class="slide level2">
+<h2>VirtualBox: Allocate HDD Space</h2>
+<p><img data-src="img/virtualbox_hdd.png" alt="VirtualBox HDD" height="450" /></p>
+</section><section id="virtualbox-attach-iso-image-to-virtual-ide-drive" class="slide level2">
+<h2>VirtualBox: Attach ISO Image to Virtual IDE drive</h2>
+<p><img data-src="img/virtualbox_set_iso.png" alt="VirtualBox HDD" height="450" /></p>
+<p>## Start your virtual machine</p>
+<pre><code>* Once the VM boots into Mint, use your CMD key to open the menu and type in &quot;display&quot; to search for the display properties. Cange the size of the display  
+* double click on the &#39;Install Linux Mint&#39; CD icon on the desktop.  
+* For most screens, accept the defaults.  
+  + Create a username and password when prompted. **THIS IS YOUR SUPERUSER PASSWORD YOU MUST REMEMBER IT** 
+* Install should take around 8 minutes
+* When you are done, click &#39;Keep Exploring.&#39; Then go to the Start Menu, click the power icon, and select &quot;Shutdown.&quot; When prompted to remove install media, hit enter.  </code></pre>
+</section><section id="before-turning-your-new-vm-back-on." class="slide level2">
+<h2>BEFORE Turning your new VM back on.</h2>
+<ul>
+<li>Go into settings and give your new VM some more graphics resources, if available!<br />
+</li>
+<li>Click ‘Enable 2D acceleration’<br />
+</li>
+<li>Make sure your IDE Optical Media shows ‘Empty’</li>
+</ul>
+<p>Now boot up your new Linux VM.</p>
+</section><section id="install-virtualbox-guest-additions" class="slide level2">
+<h2>Install VirtualBox Guest additions</h2>
+<p>VirtualBox guest additions extends guest OS functionality and allows access to hardware video acceleration (faster!)</p>
+<ul>
+<li>In the <strong>VirtualBox</strong> ‘Devices’ drop down, select ‘Insert guest additions image’ and let it install<br />
+</li>
+<li>Reboot the VM using either the start menu, or <code>sudo shutdown -r now</code></li>
+</ul>
+</section></section>
+<section><section id="installing-postgis" class="title-slide slide level1"><h1>Installing PostGIS</h1></section><section id="using-bash" class="slide level2">
+<h2>Using Bash</h2>
+<p>The linux shell is called ‘bash.’ The bash shell language is its own turing-complete programming language. There are many command-line utilities for bash that come pre-installed with linux.</p>
+<p>To open bash, press “CTRL-ALT-T” or click on the shell icon.</p>
+</section><section id="basic-bash-commands" class="slide level2">
+<h2>Basic Bash Commands</h2>
+<pre><code># Change Directory
+cd /
+
+# List files 
+ls  
+ls -l 
+ls -lha
+  
+# Super User Do  
+sudo ls  </code></pre>
+</section><section id="basic-bash-commands-1" class="slide level2">
+<h2>Basic Bash Commands</h2>
+<pre><code># Create file 
+touch example.txt  
+
+# Edit file, CTRL-X to exit. 
+nano example.txt  
+
+# Remove File  
+rm example.txt  
+sudo ls  </code></pre>
+</section><section id="basic-bash-commands-2" class="slide level2">
+<h2>Basic Bash Commands</h2>
+<pre><code>#Install Something  
+sudo apt-get install htop
+
+# Run it
+htop  </code></pre>
+</section><section id="adding-the-postgis-repository" class="slide level2">
+<h2>Adding the PostGIS repository</h2>
+<p>Via the <a href="http://trac.osgeo.org/postgis/wiki/UsersWikiPostGIS24UbuntuPGSQL10Apt">PostGIS website</a></p>
+<pre><code>sudo sh -c &#39;echo &quot;deb http://apt.postgresql.org/pub/repos/apt bionic-pgdg main&quot;&#39; &gt;&gt; /etc/apt/sources.list
+wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
+sudo add-apt update  
+</code></pre>
+</section><section id="install-postgis" class="slide level2">
+<h2>Install PostGIS</h2>
+<pre><code># install postgresql and postgis (2 minutes)
+sudo apt-get install postgresql-10 postgresql-10-postgis-2.4 postgresql-10-postgis-scripts postgis
+
+# install qgis (5 minutes)
+sudo apt-get install qgis  
+
+# to get pgadmin4, the graphical database manager, you do this  
+sudo apt-get install pgadmin4
+
+# update package info and upgrade everything 
+sudo apt-get update &amp;&amp; sudo apt-get upgrade </code></pre>
+</section><section id="create-a-spatial-database" class="slide level2">
+<h2>Create a Spatial Database</h2>
+<p>psql is the postgresql command line admin tool. It has its own set of shortcut commands that are prefaced with “\”</p>
+<pre><code># in bash, fire off psql from the user &#39;postgres&#39;
+sudo -u postgres psql
+
+# you are now in the psql interface, notice the difference?
+CREATE USER seth WITH PASSWORD &#39;seth&#39; SUPERUSER;
+CREATE DATABASE gis;
+\c gis
+CREATE EXTENSION postgis;
+CREATE EXTENSION postgis_topology;
+\q</code></pre>
+</section><section id="loading-data" class="slide level2">
+<h2>Loading data</h2>
+<p>Two ways to load data:</p>
+<ol type="1">
+<li>Via QGIS<br />
+</li>
+<li>Via shp2pgsql in bash</li>
+</ol>
+<p>Download some data from FGDL.org and let’s get cracking…</p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="Virtual_Machines_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="Virtual_Machines_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'concave', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+        menu: {
+          numbers: true,
+          custom: false,
+          themes: false,
+          transitions: false
+        },
+
+
+
+        chalkboard: {
+          toggleNotesButton: true,
+          theme: 'whiteboard',
+        },
+
+        keyboard: {
+          67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+          66: function() { RevealChalkboard.toggleChalkboard() }, // toggle chalkboard when 'b' is pressed
+          46: function() { RevealChalkboard.clear() },    // clear chalkboard when 'DEL' is pressed
+           8: function() { RevealChalkboard.reset() },    // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+          68: function() { RevealChalkboard.download() }, // downlad recorded chalkboard drawing when 'd' is pressed
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'Virtual_Machines_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'Virtual_Machines_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+          { src: 'Virtual_Machines_files/reveal.js-3.3.0.1/plugin/chalkboard/chalkboard.js', async: true },
+          { src: 'Virtual_Machines_files/reveal.js-3.3.0.1/plugin/menu/menu.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
