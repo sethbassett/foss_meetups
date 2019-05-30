@@ -62,10 +62,24 @@ Download the VirtualBox installer that is appropriate for your system and instal
 If you have Windows 10 installed [you can opt to use Hyper-V instead of VirtualBox](https://www.nextofwindows.com/how-to-enable-configure-and-use-hyper-v-on-windows-10). You shouldn't have problems but I won't be able to troubleshoot anything that comes up until the second hour.  
 
 ## June 5, 2019: QGIS Tools, Toolboxes, Utilities, and Plugins  
- Presenter: **Phil**  
- Prerequisites: TBD  
- 
- 
+Presenter: **Phil**
+
+This tutorial aims to cover the basic functions provided by QGIS for working with:
+  + Coordinate systems
+  + Raster data
+    + Raster calculator, DEMs, Raster to Vector Conversion
+  + Vector data
+    + Append, Union, Intersect, Buffer, Clip
+  + Basemaps
+    + Open Street Map
+
+We'll cover all of these topics by working through a site selection exercise.
+
+### **Prerequisites:**
+  + A laptop with QGIS already installed (either 2.18+ or 3.4+).
+  + **Data:**
+    + Zipped GIS data available [here](https://hermes.freac.fsu.edu/foss/FOSS_Data.zip) (~6MB).
+
 ## June 26, 2019: QGIS Map Composer (or was it Spatial SQL?)  
  Presenter: **Linc**  
  Prerequisites: TBD  
