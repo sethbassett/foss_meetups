@@ -70,15 +70,15 @@ This tutorial aims to cover the basic functions provided by QGIS for working wit
     + Raster calculator, DEMs, Raster to Vector Conversion
   + Vector data
     + Append, Union, Intersect, Buffer, Clip
-  + Basemaps
-    + Open Street Map
 
 We'll cover all of these topics by working through a site selection exercise.
+
+You can find the slides to the presentation [here](https://docs.google.com/presentation/d/1VrU04zedVM4MTOhmbHMPutT7sl_-WF1VpqABXryX8os/edit?usp=sharing).
 
 ### **Prerequisites:**
   + A laptop with QGIS already installed (either 2.18+ or 3.4+).
   + **Data:**
-    + Zipped GIS data available [here](https://hermes.freac.fsu.edu/foss/FOSS_Data.zip) (~6MB).
+    + Zipped GIS data available [here](/20190605_QGIS_SiteSelection/FOSS_Data.zip) (~15MB).
 
 ## June 26, 2019: QGIS Map Composer (or was it Spatial SQL?)  
  Presenter: **Linc**  
