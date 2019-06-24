@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE>RLC Style</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.5  (Win32)">
+	<META NAME="AUTHOR" CONTENT="Robert L Clay">
+	<META NAME="CREATED" CONTENT="20190526;14165891">
+	<META NAME="CHANGEDBY" CONTENT="Robert L Clay">
+	<META NAME="CHANGED" CONTENT="20190601;14440713">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P STYLE="margin-bottom: 0in; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in; font-weight: normal">
+<FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=4>June 26, 2019:
+Spatial SQL &ndash; Geoprocessing in the Database</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Presenter:
+Linc</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Geoprocessing
+with SQL in PostGIS: the third generation of GIS.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><B>Session
+Plan:</B></FONT></FONT></P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Introduction
+	and Background (10 min)</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Spatial
+	SQL Functions/Operations (15 min)</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Hands-On
+	Tutorial (25 min)</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Second-Hour
+	Self-Directed Test Drive (PSU GEOG 868 Lessons 3 &amp; 4)</FONT></FONT></P>
+</UL>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>This
+session will provide background information on the &ldquo;why, what,
+and how&rdquo; to get started with PostGIS.  The session will focus
+on the &ldquo;GIS&rdquo; part of using PostGIS, and will only mention
+in passing the operation and maintenance of SQL databases (which is
+another  important but separate topic).  After the why, what, and
+how, we will discuss best practices, data types, and spatial
+functions.  Lastly, there will be a structured hands-on tutorial that
+includes loading existing data, manually creating data, and
+performing geoprocessing operations.  The second hour can be spent in
+further experimentation on the data just loaded, working through the
+PSU GEOG 868 Lessons 3 and 4 (links below under &ldquo;Resources&rdquo;),
+or drinking beer and leveraging other folks' PostGIS efforts.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><B>Prerequisites:</B></FONT></FONT></P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>A
+	laptop with 1 GHz processor or better, at least 1 GB RAM, and at
+	least 5 GB of available disk space (for this session, not sufficient
+	for production uses).</FONT></FONT></P>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Required
+	Software:</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>PostgreSQL
+		10 (this demo uses 10.8)</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>PostGIS
+		2 (this demo uses 2.4)</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>QGIS
+		(any currently supported version should work)</FONT></FONT></P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Installing
+	PostgreSQL and PostGIS: </FONT></FONT>
+	</P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>The
+		simplest approach is the EnterpriseDB install package at </FONT></FONT>
+		</P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in"><A HREF="https://www.enterprisedb.com/downloads/postgres-postgresql-downloads"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+			</SPAN></FONT></FONT>
+			</P>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>This
+			includes Stack Builder that installs PostGIS (and other packages)</FONT></FONT></P>
+		</UL>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Installation
+		notes (differences from the instructions linked below)</FONT></FONT></P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>In
+			the Stack Builder dialog, select &ldquo;PostGIS 2.4 Bundle for
+			PostgreSQL 10&rdquo;</FONT></FONT></P>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>In
+			the Choose Components dialog, also select &ldquo;Create spatial
+			database&rdquo;</FONT></FONT></P>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Accept
+			the defaults as you navigate the installation</FONT></FONT></P>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Remember
+			your password!</FONT></FONT></P>
+		</UL>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Installation
+		instructions (courtesy of Boston GIS and PSU GEOG 868) are at</FONT></FONT></P>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in"><A HREF="http://www.bostongis.com/PrinterFriendly.aspx?content_name=postgis_tut01"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=2><SPAN STYLE="font-weight: normal">http://www.bostongis.com/PrinterFriendly.aspx?content_name=postgis_tut01</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=2><SPAN STYLE="font-weight: normal">
+			</SPAN></FONT></FONT>
+			</P>
+			<LI><P STYLE="margin-bottom: 0in"><A HREF="https://www.e-education.psu.edu/spatialdb/open_software_download_instructions"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=2><SPAN STYLE="font-weight: normal">https://www.e-education.psu.edu/spatialdb/open_software_download_instructions</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=2><SPAN STYLE="font-weight: normal">
+			</SPAN></FONT></FONT>
+			</P>
+		</UL>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Installing
+	QGIS</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Most
+		likely you will have already installed QGIS for the June 5 FOSS
+		meetup</FONT></FONT></P>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">If
+		not, downloads are at
+		</SPAN></FONT></FONT><A HREF="https://www.qgis.org/en/site/forusers/download.html"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://www.qgis.org/en/site/forusers/download.html</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Download
+	Package:</FONT></FONT></P>
+	<UL>
+		<UL>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Name
+			= tlh_foss_postgis.zip</FONT></FONT></P>
+			<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Package
+			includes -</FONT></FONT></P>
+			<UL>
+				<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>PostGIS
+				session agenda (for Github) (html)</FONT></FONT></P>
+				<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Introduction
+				and functions slides (pdf)</FONT></FONT></P>
+				<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>PostGIS
+				test drive slides (pdf)</FONT></FONT></P>
+				<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>MassGIS
+				2010 Census Townships shapefile (shp)</FONT></FONT></P>
+				<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Data
+				loading and geoprocessing SQL file (sql)</FONT></FONT></P>
+			</UL>
+		</UL>
+	</UL>
+</UL>
+<P STYLE="margin-bottom: 0in; font-weight: normal"><BR>
+</P>
+<P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><B>Resources:</B></FONT></P>
+<UL>
+	<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif">PostgreSQ</FONT><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">L
+	home</SPAN></FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="https://www.postgresql.org/"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://www.postgresql.org/</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>PostGIS
+	home</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="https://postgis.net/"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://postgis.net/</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>PostGIS
+	tutorial (a great place to start)</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="https://postgis.net/workshops/postgis-intro/"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://postgis.net/workshops/postgis-intro/</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Penn
+	State GEOG 868, Lessons 3 &amp; 4 (another good place to start)</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="https://www.e-education.psu.edu/spatialdb/node/1776"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://www.e-education.psu.edu/spatialdb/node/1776</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Boston
+	GIS (good tutorials, also PL/R info) </FONT></FONT>
+	</P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="http://www.bostongis.com/"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">http://www.bostongis.com/</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Advanced
+	shape manipulation (a must-read for understanding shapes) -</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="http://2010.foss4g.org/presentations/3369.pdf"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">http://2010.foss4g.org/presentations/3369.pdf</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in">Ge<FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">og
+	vs. Geom performance</SPAN></FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="https://medium.com/coord/postgis-performance-showdown-geometry-vs-geography-ec99967da4f0"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://medium.com/coord/postgis-performance-showdown-geometry-vs-geography-ec99967da4f0</SPAN></FONT></FONT></A><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">
+		</SPAN></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Matt
+	Strimas-Mackey (excellent starting overview)</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">-
+		</SPAN></FONT></FONT><A HREF="http://strimas.com/spatial/r-postgis-2/"><FONT COLOR="#000000"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">http://strimas.com/spatial/r-postgis-2/</SPAN></SPAN></FONT></FONT></FONT></A></P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Paul
+	Ramsey (choosing the right tool)</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-
+		</SPAN></SPAN></FONT></FONT></FONT><A HREF="https://www.gis-professional.com/content/article/the-power-of-postgresql-and-postgis-interview-with-paul-ramsey"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://www.gis-professional.com/content/article/the-power-of-postgresql-and-postgis-interview-with-paul-ramsey</SPAN></FONT></FONT></A><FONT COLOR="#000000"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+		</SPAN></SPAN></FONT></FONT></FONT>
+		</P>
+	</UL>
+	<LI><P STYLE="margin-bottom: 0in; font-weight: normal"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3>Michael
+	Wagner (excellent training tutorial)</FONT></FONT></P>
+	<UL>
+		<LI><P STYLE="margin-bottom: 0in"><FONT COLOR="#000000"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">-
+		</SPAN></SPAN></FONT></FONT></FONT><A HREF="https://github.com/allspatial/train-postgresql-postgis-in-a-nutshell"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-weight: normal">https://github.com/allspatial/train-postgresql-postgis-in-a-nutshell</SPAN></FONT></FONT></A><FONT COLOR="#000000"><FONT FACE="Trebuchet MS, sans-serif"><FONT SIZE=3><SPAN STYLE="font-style: normal"><SPAN STYLE="font-weight: normal">
+		</SPAN></SPAN></FONT></FONT></FONT>
+		</P>
+	</UL>
+	<P STYLE="margin-bottom: 0in; font-weight: normal"></P>
+</UL>
+</BODY>
+</HTML>
