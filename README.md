@@ -80,9 +80,30 @@ You can find the slides to the presentation [here](https://docs.google.com/prese
   + **Data:**
     + Zipped GIS data available [here](/20190605_QGIS_SiteSelection/FOSS_Data.zip) (~15MB).
 
-## June 26, 2019: QGIS Map Composer (or was it Spatial SQL?)  
+## June 26, 2019: PostGIS & Spatial SQL
  Presenter: **Linc**  
- Prerequisites: TBD  
+ Prerequisites:  
+  + A laptop with 1 GHz processor or better, at least 1 GB RAM, and at least 5 GB of available disk space (for this session, not sufficient for production uses).  
+  + Required Software:  
+    + PostgreSQL 10 (this demo uses 10.8)  
+    + PostGIS 2 (this demo uses 2.4)  
+    + QGIS (any currently supported version should work)  
+
+Installing PostgreSQL and PostGIS:
+
+  + The simplest approach is the EnterpriseDB install package at:
+    + https://www.enterprisedb.com/downloads/postgres-postgresql-downloads  
+    + This includes Stack Builder that installs PostGIS (and other packages)  
+  + Installation notes (differences from the instructions linked below)  
+    + In the Stack Builder dialog, select “PostGIS 2.4 Bundle for PostgreSQL 10”  
+    + In the Choose Components dialog, also select “Create spatial database”  
+    + Accept the defaults as you navigate the installation  
+    + Remember your password!
+
+Installation instructions (courtesy of Boston GIS and PSU GEOG 868) are at  
+  + http://www.bostongis.com/PrinterFriendly.aspx?content_name=postgis_tut01  
+  + https://www.e-education.psu.edu/spatialdb/open_software_download_instructions
+   
  
 ## July 31 or August 7, 2019: Feeding, Watering, and Caring for GIS Servers  
  Presenter: **Mark**  
