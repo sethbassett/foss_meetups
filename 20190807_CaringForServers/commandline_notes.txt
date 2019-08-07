@@ -1,0 +1,110 @@
+Commands are indented...
+(1) Public-Private key commands:
+    cd ~/.ssh
+    
+if directory doesn't exist:
+    mkdir ~/.ssh
+    
+Generate private/public key pair in .ssh:
+    cd ~/.ssh
+    ssh-keygen -t rsa -b 4096
+    
+list new keyfiles:
+    ls -l
+    
+(2) (Launch your new server.  During configuration you will probably
+be asked for a public key contents.  You can use this command to
+list the contents of your public key. You can select the output
+from this command to copy/paste as needed):
+    cat id_rsa.pub
+
+(3) Log-in to server (replace IP address with your server IP):
+    ssh root@165.227.207.150
+
+(4) Create user on server:
+    adduser althea
+    
+Give this new user the ability to sudo (be like root):
+    usermod -aG sudo althea
+    
+Give this new user the ability to use root's ssh configuration,
+change "althea" to your user:
+    rsync --archive --chown=althea:althea ~/.ssh /home/althea
+    
+logout of server:
+    logout
+    
+Login as new user you created (replace IP address with your server IP,
+and althea with your user):
+    ssh althea@165.227.207.150
+
+(5) Setup firewall:
+
+Check if firewall installed/running:
+    sudo ufw status
+(install if not already. It's part of Ubuntu so it should be already on your server)
+
+Tell firewall to allow ssh (secure shell) connections:
+    sudo ufw allow ssh
+    sudo ufw enable
+(this may warn you about disrupting current user sessions, disregard)
+
+Check newly configured firewall's status:
+    sudo ufw status
+
+(6) Updating/Installing server software
+apt - advanced package tool
+
+First always update software list:
+    sudo apt update
+    
+You can see what can be updated with this command:
+    apt list --upgradable
+    
+Install updates:
+    sudo apt upgrade
+
+(7) Install Apache Web Server
+
+If you haven't done so recently, upgrade server software package list:
+    sudo apt update
+    
+Install Apache:
+    sudo apt install apache2
+    
+Let Apache through firewall:
+    sudo ufw allow 'Apache'
+    
+Look at new firewall rules:
+    sudo ufw status
+    
+Apply a don't show server name configuration:
+    sudo nano /etc/apache2/conf-enabled/security.conf
+
+Edit this config file and change server tokens and server signature to:
+ServerTokens Prod
+ServerSignature Off
+(Ctrl-X will prompt you to save changes to file, hit enter)
+
+Restart Apache to read these new configs:
+    sudo systemctl reload apache2
+    
+Check Apache status:
+    sudo systemctl status apache2
+
+(8) Disable root login:
+
+    sudo nano /etc/ssh/sshd_config
+    
+(in this text edit session, near the # Authentication section, change
+permit root login to no):
+PermitRootLogin no
+(Ctrl-X to exit text editor, when prompted to save into file, hit enter)
+
+Restart the secure shell service:
+    sudo systemctl restart ssh
+
+Try to log in as root now.  Even with the key, you will not be able to,
+nor will anyone else (hopefully!). The user you created to manage the server
+can login anytime.
+

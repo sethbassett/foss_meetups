@@ -107,7 +107,12 @@ Installation instructions (courtesy of Boston GIS and PSU GEOG 868) are at
  
 ## July 31 or August 7, 2019: Feeding, Watering, and Caring for GIS Servers  
  Presenter: **Mark**  
- Prerequisites: TBD
+ Prerequisites:  
+ 
+Prerequisites:  
+    + A Ubuntu installation (Linux Mint, Kubuntu etc) on a laptop (most of us have already done this in prior meetups).  This can be a virtual machine.  Version 18.04 LTS.  This installation needs to have the ability to connect to the internet as that’s how you’ll communicate with your server.  
+    + For the second half of the discussion, if you want to try standing up a server, you’ll need an account (with credit card) with a cloud server provider.  I use Digital Ocean, but Amazon or Azure will also work.  The example I go through will use Digital Ocean.  Whatever cloud provider you choose, they need to have Ubuntu 18.04 server deployments.  You can run a decent experimental server at Digital Ocean for about 6 cents an hour (8 GB RAM, 160 GB HD, 4 Processors). There are other models that are significantly cheaper, others that are more.  If you don’t want to set up a server, you’ll still learn some of the inner-workings of Ubuntu and you can install and configure some of the examples on your non-server Ubuntu laptop if you want.  
+    + Here’s the URL for Digital Ocean if you want to check them out: https://www.digitalocean.com/  
   
 ## September 4, 2019: Topic TBD  
  Presenter: **Chris**  
